@@ -1,0 +1,1 @@
+- [2024-10-02T11:16:36+05:30] feat(inventory): add real-time stock discrepancy detection engine
