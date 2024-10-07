@@ -5,3 +5,4 @@
 - [2024-10-04T09:28:17+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2024-10-04T12:15:21+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2024-10-04T20:32:09+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2024-10-07T19:58:35+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
