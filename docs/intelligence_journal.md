@@ -8,3 +8,4 @@
 - [2024-10-07T19:58:35+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2024-10-08T14:16:49+05:30] docs(api): document B2B procurement webhook payload schema
 - [2024-10-08T16:04:44+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2024-10-08T21:54:13+05:30] docs(api): document B2B procurement webhook payload schema
