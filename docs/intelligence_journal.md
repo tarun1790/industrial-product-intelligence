@@ -11,3 +11,4 @@
 - [2024-10-08T21:54:13+05:30] docs(api): document B2B procurement webhook payload schema
 - [2024-10-09T09:53:27+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2024-10-10T11:43:44+05:30] docs(specs): add architecture overview for industrial supplier connector
+- [2024-10-11T15:30:24+05:30] docs(api): document B2B procurement webhook payload schema
