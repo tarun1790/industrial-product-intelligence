@@ -14,3 +14,4 @@
 - [2024-10-11T15:30:24+05:30] docs(api): document B2B procurement webhook payload schema
 - [2024-10-11T19:38:10+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2024-10-11T21:30:39+05:30] docs(api): document B2B procurement webhook payload schema
+- [2024-10-15T09:47:39+05:30] feat(inventory): add real-time stock discrepancy detection engine
