@@ -26,3 +26,4 @@
 - [2024-10-18T14:50:42+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2024-10-18T20:44:38+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2024-10-21T14:50:44+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2024-10-23T15:27:23+05:30] style(dashboard): improve RFQ status badge typography and spacing
