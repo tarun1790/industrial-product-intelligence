@@ -34,3 +34,4 @@
 - [2024-11-04T10:11:16+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2024-11-04T18:25:42+05:30] docs(api): document B2B procurement webhook payload schema
 - [2024-11-04T19:22:55+05:30] docs(api): document B2B procurement webhook payload schema
+- [2024-11-06T13:21:21+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
