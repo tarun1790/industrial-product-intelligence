@@ -43,3 +43,4 @@
 - [2024-11-13T09:51:15+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2024-11-14T16:04:54+05:30] docs(api): document B2B procurement webhook payload schema
 - [2024-11-14T17:39:56+05:30] docs(api): document B2B procurement webhook payload schema
+- [2024-11-14T20:34:31+05:30] docs(specs): add architecture overview for industrial supplier connector
