@@ -47,3 +47,4 @@
 - [2024-11-15T11:32:14+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2024-11-15T15:44:50+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2024-11-15T15:56:07+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2024-11-15T20:58:03+05:30] style(dashboard): improve RFQ status badge typography and spacing
