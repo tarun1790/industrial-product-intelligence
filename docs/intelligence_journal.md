@@ -57,3 +57,4 @@
 - [2024-11-20T17:57:23+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2024-11-21T20:12:38+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2024-11-22T11:13:59+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2024-11-25T17:30:17+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
