@@ -62,3 +62,4 @@
 - [2024-11-27T16:06:48+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2024-11-28T12:52:11+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2024-11-28T16:02:13+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2024-12-02T15:24:51+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
