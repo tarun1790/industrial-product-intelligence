@@ -72,3 +72,4 @@
 - [2024-12-09T09:20:43+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2024-12-13T11:59:26+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2024-12-13T19:03:13+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2024-12-19T16:15:25+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
