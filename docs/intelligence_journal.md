@@ -83,3 +83,4 @@
 - [2024-12-31T15:35:19+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2024-12-31T15:49:07+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-01-01T11:17:51+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-01-01T20:08:02+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
