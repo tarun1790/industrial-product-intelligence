@@ -90,3 +90,4 @@
 - [2025-01-10T10:17:06+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-01-10T15:26:05+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-01-10T16:49:21+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-01-10T19:29:11+05:30] docs(api): document B2B procurement webhook payload schema
