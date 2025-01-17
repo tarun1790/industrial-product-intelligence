@@ -93,3 +93,4 @@
 - [2025-01-10T19:29:11+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-01-15T17:01:56+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-01-17T09:30:16+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-01-17T15:47:01+05:30] docs(api): document B2B procurement webhook payload schema
