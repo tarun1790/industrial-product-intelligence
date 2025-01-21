@@ -95,3 +95,4 @@
 - [2025-01-17T09:30:16+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-01-17T15:47:01+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-01-21T15:22:59+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-01-21T15:50:03+05:30] feat(inventory): add real-time stock discrepancy detection engine
