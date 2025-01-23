@@ -97,3 +97,4 @@
 - [2025-01-21T15:22:59+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-01-21T15:50:03+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-01-21T17:16:51+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-01-23T15:50:19+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
