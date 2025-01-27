@@ -101,3 +101,4 @@
 - [2025-01-23T18:51:52+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-01-24T12:21:35+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-01-24T19:22:45+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-01-27T10:54:24+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
