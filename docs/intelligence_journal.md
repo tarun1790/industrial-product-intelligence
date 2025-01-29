@@ -103,3 +103,4 @@
 - [2025-01-24T19:22:45+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-01-27T10:54:24+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-01-28T11:38:40+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2025-01-29T09:27:30+05:30] refactor(catalog): optimize product categorization and search indexing
