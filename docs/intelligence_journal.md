@@ -114,3 +114,4 @@
 - [2025-02-13T18:00:46+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-02-14T12:09:41+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-02-17T18:45:48+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-02-18T09:16:01+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
