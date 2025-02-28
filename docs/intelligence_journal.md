@@ -121,3 +121,4 @@
 - [2025-02-21T14:38:40+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-02-24T19:41:33+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-02-27T16:06:02+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-02-28T17:53:16+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
