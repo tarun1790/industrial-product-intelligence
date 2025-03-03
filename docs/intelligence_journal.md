@@ -123,3 +123,4 @@
 - [2025-02-27T16:06:02+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-02-28T17:53:16+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-03-02T13:00:09+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-03-03T15:47:41+05:30] docs(specs): add architecture overview for industrial supplier connector
