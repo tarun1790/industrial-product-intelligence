@@ -129,3 +129,4 @@
 - [2025-03-06T21:24:26+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-03-07T21:50:16+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-03-10T09:30:04+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-03-10T09:52:31+05:30] feat(inventory): add real-time stock discrepancy detection engine
