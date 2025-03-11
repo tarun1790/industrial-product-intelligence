@@ -132,3 +132,4 @@
 - [2025-03-10T09:52:31+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-03-11T10:30:46+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-03-11T11:15:22+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2025-03-11T14:42:03+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
