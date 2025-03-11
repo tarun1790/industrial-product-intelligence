@@ -130,3 +130,4 @@
 - [2025-03-07T21:50:16+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-03-10T09:30:04+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-03-10T09:52:31+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-03-11T10:30:46+05:30] docs(api): document B2B procurement webhook payload schema
