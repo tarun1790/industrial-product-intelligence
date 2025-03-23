@@ -140,3 +140,4 @@
 - [2025-03-17T13:26:11+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-03-18T12:20:59+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-03-19T11:55:54+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2025-03-23T20:30:03+05:30] refactor(catalog): optimize product categorization and search indexing
