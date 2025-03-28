@@ -145,3 +145,4 @@
 - [2025-03-24T13:32:26+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-03-24T14:30:59+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-03-28T13:11:58+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2025-03-28T20:46:34+05:30] docs(specs): add architecture overview for industrial supplier connector
