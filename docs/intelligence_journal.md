@@ -146,3 +146,4 @@
 - [2025-03-24T14:30:59+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-03-28T13:11:58+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-03-28T20:46:34+05:30] docs(specs): add architecture overview for industrial supplier connector
+- [2025-03-28T21:35:28+05:30] feat(inventory): add real-time stock discrepancy detection engine
