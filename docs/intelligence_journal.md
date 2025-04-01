@@ -152,3 +152,4 @@
 - [2025-04-01T12:43:23+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-04-01T14:55:33+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-04-01T20:00:18+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2025-04-01T20:19:50+05:30] refactor(catalog): optimize product categorization and search indexing
