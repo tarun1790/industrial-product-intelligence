@@ -161,3 +161,4 @@
 - [2025-04-08T14:09:21+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-04-10T18:10:31+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-04-14T14:56:45+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-04-14T16:51:44+05:30] docs(specs): add architecture overview for industrial supplier connector
