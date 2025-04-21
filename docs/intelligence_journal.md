@@ -166,3 +166,4 @@
 - [2025-04-15T18:07:14+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-04-15T19:07:23+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-04-17T15:07:21+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-04-21T18:32:22+05:30] docs(specs): add architecture overview for industrial supplier connector
