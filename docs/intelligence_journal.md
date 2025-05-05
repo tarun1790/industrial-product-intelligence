@@ -175,3 +175,4 @@
 - [2025-04-30T11:01:03+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-04-30T15:45:42+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-05-01T17:25:01+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-05-05T21:20:15+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
