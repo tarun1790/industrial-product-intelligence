@@ -180,3 +180,4 @@
 - [2025-05-06T14:12:54+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-05-06T18:09:22+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-05-06T21:16:03+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-05-08T16:23:01+05:30] feat(inventory): add real-time stock discrepancy detection engine
