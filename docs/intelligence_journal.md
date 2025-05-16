@@ -186,3 +186,4 @@
 - [2025-05-11T18:50:55+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-05-13T20:33:27+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-05-16T09:52:53+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-05-16T10:22:28+05:30] docs(api): document B2B procurement webhook payload schema
