@@ -190,3 +190,4 @@
 - [2025-05-16T11:14:21+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-05-22T12:22:57+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-05-26T11:06:43+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-05-29T19:57:21+05:30] style(dashboard): improve RFQ status badge typography and spacing
