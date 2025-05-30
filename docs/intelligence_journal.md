@@ -191,3 +191,4 @@
 - [2025-05-22T12:22:57+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-05-26T11:06:43+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-05-29T19:57:21+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-05-30T10:29:05+05:30] docs(specs): add architecture overview for industrial supplier connector
