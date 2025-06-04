@@ -193,3 +193,4 @@
 - [2025-05-29T19:57:21+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-05-30T10:29:05+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-05-30T16:55:53+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-06-04T16:19:53+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
