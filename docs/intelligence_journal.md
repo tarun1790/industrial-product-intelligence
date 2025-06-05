@@ -198,3 +198,4 @@
 - [2025-06-04T16:59:14+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-06-04T20:56:39+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-06-05T09:33:44+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2025-06-05T18:13:08+05:30] style(dashboard): improve RFQ status badge typography and spacing
