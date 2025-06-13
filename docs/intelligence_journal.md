@@ -204,3 +204,4 @@
 - [2025-06-10T11:53:58+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-06-13T11:43:02+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-06-13T16:00:15+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2025-06-13T18:12:28+05:30] feat(inventory): add real-time stock discrepancy detection engine
