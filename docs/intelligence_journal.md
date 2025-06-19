@@ -208,3 +208,4 @@
 - [2025-06-13T19:22:46+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-06-14T13:57:42+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-06-18T21:36:56+05:30] docs(specs): add architecture overview for industrial supplier connector
+- [2025-06-19T12:26:28+05:30] docs(specs): add architecture overview for industrial supplier connector
