@@ -212,3 +212,4 @@
 - [2025-06-19T17:47:52+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-06-20T09:36:05+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-06-26T09:08:51+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-06-26T18:35:39+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
