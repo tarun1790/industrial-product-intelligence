@@ -214,3 +214,4 @@
 - [2025-06-26T09:08:51+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-06-26T18:35:39+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-06-26T19:50:53+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2025-06-27T09:39:39+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
