@@ -217,3 +217,4 @@
 - [2025-06-27T09:39:39+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-06-27T13:30:02+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-07-01T21:13:25+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-07-08T16:24:05+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
