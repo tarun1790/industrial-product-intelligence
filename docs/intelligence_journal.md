@@ -220,3 +220,4 @@
 - [2025-07-08T16:24:05+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-07-11T18:16:17+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-07-11T19:40:02+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-07-11T21:35:04+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
