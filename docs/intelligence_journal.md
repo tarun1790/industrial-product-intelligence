@@ -222,3 +222,4 @@
 - [2025-07-11T19:40:02+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-07-11T21:35:04+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-07-14T16:25:12+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-07-14T21:49:04+05:30] refactor(catalog): optimize product categorization and search indexing
