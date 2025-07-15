@@ -223,3 +223,4 @@
 - [2025-07-11T21:35:04+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-07-14T16:25:12+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-07-14T21:49:04+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-07-15T13:11:27+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
