@@ -228,3 +228,4 @@
 - [2025-07-16T17:12:58+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-07-20T21:12:26+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-07-23T11:59:59+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-07-23T12:56:41+05:30] style(dashboard): improve RFQ status badge typography and spacing
