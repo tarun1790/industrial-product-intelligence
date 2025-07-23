@@ -227,3 +227,4 @@
 - [2025-07-15T14:06:00+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-07-16T17:12:58+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-07-20T21:12:26+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-07-23T11:59:59+05:30] refactor(catalog): optimize product categorization and search indexing
