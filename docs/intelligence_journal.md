@@ -232,3 +232,4 @@
 - [2025-07-23T14:54:14+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-07-25T10:58:32+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-07-25T17:40:25+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-07-29T09:55:02+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
