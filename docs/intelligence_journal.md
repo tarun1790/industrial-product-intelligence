@@ -243,3 +243,4 @@
 - [2025-08-13T09:34:22+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-08-13T09:55:39+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-08-13T15:37:47+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-08-13T21:03:25+05:30] docs(specs): add architecture overview for industrial supplier connector
