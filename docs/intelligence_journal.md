@@ -246,3 +246,4 @@
 - [2025-08-13T21:03:25+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-08-13T21:41:46+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-08-22T09:20:45+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-08-22T17:02:50+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
