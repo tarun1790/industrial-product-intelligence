@@ -250,3 +250,4 @@
 - [2025-08-25T10:31:13+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-08-25T17:13:40+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-08-25T18:07:46+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-08-26T09:17:46+05:30] feat(inventory): add real-time stock discrepancy detection engine
