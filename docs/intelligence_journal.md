@@ -252,3 +252,4 @@
 - [2025-08-25T18:07:46+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-08-26T09:17:46+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-08-26T09:20:21+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-08-26T10:03:56+05:30] docs(specs): add architecture overview for industrial supplier connector
