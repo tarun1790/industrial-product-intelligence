@@ -259,3 +259,4 @@
 - [2025-08-27T11:16:45+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-08-27T14:29:10+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-08-28T09:03:12+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-08-29T17:25:49+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
