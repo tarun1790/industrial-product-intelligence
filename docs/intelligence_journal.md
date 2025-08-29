@@ -260,3 +260,4 @@
 - [2025-08-27T14:29:10+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-08-28T09:03:12+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-08-29T17:25:49+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-08-29T19:51:09+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
