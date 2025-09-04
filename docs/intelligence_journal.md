@@ -272,3 +272,4 @@
 - [2025-09-03T12:14:00+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-09-04T09:26:33+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-09-04T14:19:46+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-09-04T19:34:07+05:30] docs(specs): add architecture overview for industrial supplier connector
