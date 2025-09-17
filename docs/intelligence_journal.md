@@ -282,3 +282,4 @@
 - [2025-09-17T11:28:23+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-09-17T12:09:09+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-09-17T12:11:12+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-09-17T13:37:38+05:30] docs(api): document B2B procurement webhook payload schema
