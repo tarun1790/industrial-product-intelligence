@@ -279,3 +279,4 @@
 - [2025-09-15T15:21:33+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-09-15T17:57:17+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-09-16T10:24:43+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-09-17T11:28:23+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
