@@ -285,3 +285,4 @@
 - [2025-09-17T13:37:38+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-09-22T09:49:04+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-09-22T12:42:11+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-09-23T09:57:58+05:30] style(dashboard): improve RFQ status badge typography and spacing
