@@ -291,3 +291,4 @@
 - [2025-09-25T17:56:58+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-09-25T21:43:10+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-09-26T13:52:39+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-09-29T18:40:19+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
