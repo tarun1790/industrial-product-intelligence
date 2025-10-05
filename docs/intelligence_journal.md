@@ -297,3 +297,4 @@
 - [2025-09-30T19:11:06+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-10-02T13:56:11+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-10-02T18:16:12+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2025-10-05T17:01:39+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
