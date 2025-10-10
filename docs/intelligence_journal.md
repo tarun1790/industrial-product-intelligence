@@ -303,3 +303,4 @@
 - [2025-10-07T12:22:10+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-10-08T09:17:59+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-10-08T16:11:43+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-10-10T13:17:37+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
