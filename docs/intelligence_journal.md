@@ -306,3 +306,4 @@
 - [2025-10-10T13:17:37+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-10-12T10:05:00+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-10-13T10:26:13+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-10-13T20:12:00+05:30] style(dashboard): improve RFQ status badge typography and spacing
