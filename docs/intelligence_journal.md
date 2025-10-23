@@ -313,3 +313,4 @@
 - [2025-10-20T16:01:46+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-10-21T09:31:45+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-10-22T15:37:56+05:30] docs(specs): add architecture overview for industrial supplier connector
+- [2025-10-23T13:14:45+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
