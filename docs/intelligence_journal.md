@@ -317,3 +317,4 @@
 - [2025-10-24T15:11:34+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-10-29T13:42:29+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-10-29T19:03:06+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2025-10-29T20:32:51+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
