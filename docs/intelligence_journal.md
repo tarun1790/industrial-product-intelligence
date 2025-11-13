@@ -325,3 +325,4 @@
 - [2025-11-10T10:42:42+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-11-12T14:08:20+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-11-12T21:27:19+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-11-13T13:59:30+05:30] style(dashboard): improve RFQ status badge typography and spacing
