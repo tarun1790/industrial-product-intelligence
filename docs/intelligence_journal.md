@@ -332,3 +332,4 @@
 - [2025-11-18T09:29:17+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-11-18T12:09:16+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-11-18T17:19:30+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-11-18T17:41:13+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
