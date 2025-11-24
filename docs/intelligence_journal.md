@@ -339,3 +339,4 @@
 - [2025-11-21T21:16:58+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-11-23T18:50:24+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-11-24T17:23:32+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-11-24T18:57:21+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
