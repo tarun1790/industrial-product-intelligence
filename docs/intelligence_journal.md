@@ -346,3 +346,4 @@
 - [2025-11-28T18:34:49+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
 - [2025-12-01T12:03:10+05:30] docs(specs): add architecture overview for industrial supplier connector
 - [2025-12-01T17:06:14+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
+- [2025-12-01T20:30:07+05:30] docs(specs): add architecture overview for industrial supplier connector
