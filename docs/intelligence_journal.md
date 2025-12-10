@@ -354,3 +354,4 @@
 - [2025-12-06T11:48:13+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-12-08T21:13:45+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-12-10T15:06:37+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-12-10T19:00:05+05:30] feat(inventory): add real-time stock discrepancy detection engine
