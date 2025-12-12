@@ -359,3 +359,4 @@
 - [2025-12-12T10:26:46+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
 - [2025-12-12T12:52:50+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-12-12T15:10:56+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-12-12T18:51:17+05:30] style(dashboard): improve RFQ status badge typography and spacing
