@@ -355,3 +355,4 @@
 - [2025-12-08T21:13:45+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-12-10T15:06:37+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-12-10T19:00:05+05:30] feat(inventory): add real-time stock discrepancy detection engine
+- [2025-12-12T09:21:51+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
