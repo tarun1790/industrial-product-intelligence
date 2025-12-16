@@ -361,3 +361,4 @@
 - [2025-12-12T15:10:56+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-12-12T18:51:17+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-12-15T09:14:31+05:30] refactor(catalog): optimize product categorization and search indexing
+- [2025-12-16T12:44:23+05:30] style(dashboard): improve RFQ status badge typography and spacing
