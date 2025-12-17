@@ -364,3 +364,4 @@
 - [2025-12-16T12:44:23+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-12-16T15:03:05+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-12-16T21:50:53+05:30] fix(webhook): add retry exponential backoff for failed webhook deliveries
+- [2025-12-17T19:20:46+05:30] docs(api): document B2B procurement webhook payload schema
