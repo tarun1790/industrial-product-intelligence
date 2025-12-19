@@ -367,3 +367,4 @@
 - [2025-12-17T19:20:46+05:30] docs(api): document B2B procurement webhook payload schema
 - [2025-12-19T10:14:36+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-12-19T14:04:11+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
+- [2025-12-19T20:24:08+05:30] docs(api): document B2B procurement webhook payload schema
