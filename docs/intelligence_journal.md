@@ -375,3 +375,4 @@
 - [2025-12-23T13:59:20+05:30] perf(matcher): accelerate supplier price comparison matrix algorithms
 - [2025-12-24T15:14:31+05:30] style(dashboard): improve RFQ status badge typography and spacing
 - [2025-12-24T15:31:34+05:30] style(dashboard): improve RFQ status badge typography and spacing
+- [2025-12-25T10:56:46+05:30] style(dashboard): improve RFQ status badge typography and spacing
