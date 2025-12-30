@@ -383,3 +383,4 @@
 - [2025-12-27T20:02:35+05:30] refactor(catalog): optimize product categorization and search indexing
 - [2025-12-28T15:20:24+05:30] feat(inventory): add real-time stock discrepancy detection engine
 - [2025-12-30T09:05:14+05:30] docs(api): document B2B procurement webhook payload schema
+- [2025-12-30T14:13:11+05:30] feat(ocr): enhance document parser accuracy for multipart invoices
