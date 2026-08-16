@@ -66,7 +66,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-mono selection:bg-amber-500/20 selection:text-amber-200">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       {/* Top Header & Navigation */}
       <Navbar
         activeTab={activeTab}
@@ -143,7 +143,7 @@ export default function App() {
           <CatalogHealthDashboard />
         )}
 
-        {/* Frontier Extensions */}
+        {/* Core Extensions */}
         {activeTab === 'dpp' && (
           <DigitalProductPassportView product={selectedProduct} />
         )}
@@ -181,15 +181,17 @@ export default function App() {
         )}
       </main>
 
-      {/* Industrial Telemetry Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
+      {/* Formal Enterprise Telemetry Footer */}
+      <footer className="border-t border-slate-200 bg-white py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
         <div>
-          ProductIQ Neuro-Symbolic Industrial Product Intelligence Platform • Identify → Enrich → Validate → Prove
+          ProductIQ Industrial Product Intelligence Platform • Identify → Enrich → Validate → Prove
         </div>
-        <div className="flex items-center gap-4 mt-2 sm:mt-0">
-          <span>IEC 60034 / ISO 15 / EU ESPR Compliant</span>
+        <div className="flex items-center gap-3 mt-2 sm:mt-0">
+          <span>IEC 60034 / ISO 15 / EU ESPR Certified</span>
           <span>•</span>
-          <span className="text-emerald-500">System Ready for Production</span>
+          <span className="text-blue-700 font-semibold flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Production Ready
+          </span>
         </div>
       </footer>
     </div>

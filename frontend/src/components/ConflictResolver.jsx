@@ -28,27 +28,27 @@ export default function ConflictResolver({ product }) {
   };
 
   return (
-    <div className="space-y-6 w-full font-mono">
+    <div className="space-y-6 w-full">
       {/* Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] uppercase bg-slate-950 text-amber-400 border border-slate-800 font-bold">
-                AUDITABLE DECISION LOGIC
+              <span className="px-2 py-0.5 rounded text-[10px] uppercase bg-blue-50 text-blue-700 border border-blue-200 font-bold">
+                Pillar 4 • Explainable Outputs
               </span>
-              <h2 className="text-base font-bold text-white flex items-center gap-2">
-                <GitMerge className="w-5 h-5 text-amber-400" />
+              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <GitMerge className="w-5 h-5 text-blue-600" />
                 Multi-Source Conflict Resolution & 5-Step Reasoning Chain
               </h2>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-600 mt-1">
               Provides step-by-step explainability when catalog values disagree across distributor, legacy, and OEM datasheets.
             </p>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded bg-slate-950 text-emerald-400 text-xs border border-slate-800 font-bold">
+            <span className="px-3 py-1 rounded bg-blue-50 text-blue-700 text-xs border border-blue-200 font-semibold">
               {conflicts.length > 0 ? `${conflicts.length} Reconciled Discrepancies` : '0 Active Conflicts'}
             </span>
           </div>
@@ -59,20 +59,20 @@ export default function ConflictResolver({ product }) {
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
         {/* Left Column: Discrepancy Card */}
         <div className="xl:col-span-5 space-y-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-bold">Conflicted Parameter</span>
-                <h3 className="text-sm font-bold text-white uppercase">{activeConflict.attribute_name}</h3>
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Conflicted Parameter</span>
+                <h3 className="text-sm font-bold text-slate-900 uppercase">{activeConflict.attribute_name}</h3>
               </div>
-              <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold">
+              <span className="px-2 py-0.5 rounded text-[10px] bg-blue-50 text-blue-700 border border-blue-200 font-bold">
                 AUTO-RECONCILED
               </span>
             </div>
 
             {/* Conflicting Sources Breakdown */}
             <div className="space-y-3">
-              <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              <div className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
                 Detected Source Discrepancies ({activeConflict.detected_discrepancies?.length || 2} Sources)
               </div>
 
@@ -83,24 +83,24 @@ export default function ConflictResolver({ product }) {
                     key={idx}
                     className={`p-3.5 rounded-xl border transition-all ${
                       isSelected
-                        ? 'bg-slate-950 border-emerald-500/60 shadow-md ring-1 ring-emerald-500/30'
-                        : 'bg-slate-950/60 border-slate-800 opacity-60'
+                        ? 'bg-blue-50/60 border-blue-300 shadow-xs'
+                        : 'bg-slate-50 border-slate-200 opacity-80'
                     }`}
                   >
                     <div className="flex items-start justify-between">
                       <div className="space-y-1">
-                        <span className="text-xs font-bold text-white block">{src.source_name}</span>
-                        <span className="text-[11px] text-slate-400 block font-mono">
+                        <span className="text-xs font-semibold text-slate-900 block">{src.source_name}</span>
+                        <span className="text-[11px] text-slate-500 block font-mono">
                           Publication: {src.date || '2021'} • Authority: {src.authority_score || 0.7}
                         </span>
                       </div>
                       <div className="text-right">
-                        <div className="text-base font-bold text-amber-300 font-mono">
+                        <div className="text-sm font-bold text-slate-900 font-mono">
                           {src.value} {src.unit || activeConflict.chosen_unit || ''}
                         </div>
                         {isSelected && (
-                          <span className="text-[9px] text-emerald-400 font-bold flex items-center gap-1 justify-end mt-0.5">
-                            <CheckCircle2 className="w-3 h-3" /> Selected Truth
+                          <span className="text-[10px] text-blue-700 font-semibold flex items-center gap-1 justify-end mt-0.5">
+                            <CheckCircle2 className="w-3 h-3 text-blue-600" /> Selected Truth
                           </span>
                         )}
                       </div>
@@ -111,12 +111,12 @@ export default function ConflictResolver({ product }) {
             </div>
 
             {/* Final Chosen Value Banner */}
-            <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-              <span className="text-slate-500 text-[10px] block uppercase">Reconciled Final Canonical Truth</span>
-              <div className="text-2xl font-bold font-mono text-emerald-400">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+              <span className="text-slate-500 text-[10px] block uppercase font-medium">Reconciled Final Canonical Truth</span>
+              <div className="text-xl font-bold font-mono text-blue-700">
                 {activeConflict.chosen_value} {activeConflict.chosen_unit || ''}
               </div>
-              <p className="text-xs text-slate-300 pt-1 leading-relaxed">
+              <p className="text-xs text-slate-700 pt-1 leading-relaxed">
                 {activeConflict.resolution_reasoning}
               </p>
             </div>
@@ -125,32 +125,32 @@ export default function ConflictResolver({ product }) {
 
         {/* Right Column: 5-Step Explicit Reasoning Chain */}
         <div className="xl:col-span-7 space-y-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-bold">Explainability Audit</span>
-                <h3 className="text-sm font-bold text-white">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Audit Trail</span>
+                <h3 className="text-sm font-bold text-slate-900">
                   5-Step Automated Conflict Reasoning Chain
                 </h3>
               </div>
-              <span className="text-xs text-slate-400">Deterministic Rule Tree</span>
+              <span className="text-xs text-slate-500">Deterministic Rule Tree</span>
             </div>
 
             <div className="space-y-3">
               {(activeConflict.reasoning_chain || []).map((step) => (
-                <div key={step.step_number} className="p-3.5 rounded-lg bg-slate-950 border border-slate-800 text-xs space-y-1.5">
+                <div key={step.step_number} className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-1">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-[10px] font-bold text-amber-400">
+                      <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-[11px] font-bold">
                         {step.step_number}
                       </span>
-                      <span className="font-bold text-white">{step.step_name}</span>
+                      <span className="font-semibold text-slate-900">{step.step_name}</span>
                     </div>
-                    <span className="px-2 py-0.2 rounded text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold">
+                    <span className="px-2 py-0.2 rounded text-[10px] bg-blue-50 text-blue-700 border border-blue-200 font-semibold">
                       VERIFIED ✓
                     </span>
                   </div>
-                  <p className="text-slate-400 pl-7 text-[11px] leading-relaxed">
+                  <p className="text-slate-600 pl-7 text-[11px] leading-relaxed">
                     {step.details}
                   </p>
                 </div>

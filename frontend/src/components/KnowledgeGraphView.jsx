@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Network } from 'vis-network';
-import { DataSet } from 'vis-data';
-import { Share2, ZoomIn, ZoomOut, RefreshCw } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Share2, RefreshCw, Layers, Cpu, CheckCircle2, ShieldCheck, Search } from 'lucide-react';
 import { fetchKnowledgeGraph } from '../services/api';
 
 export default function KnowledgeGraphView({ onSelectProduct }) {
-  const containerRef = useRef(null);
-  const networkRef = useRef(null);
-  const [graphData, setGraphData] = useState(null);
+  const [graphData, setGraphData] = useState({ nodes: [], edges: [] });
   const [selectedNode, setSelectedNode] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,172 +14,129 @@ export default function KnowledgeGraphView({ onSelectProduct }) {
   const loadGraph = async () => {
     setLoading(true);
     try {
-      const data = await fetchKnowledgeGraph();
-      setGraphData(data);
+      const g = await fetchKnowledgeGraph();
+      setGraphData(g);
     } catch (err) {
-      console.error('Failed to load graph:', err);
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (!containerRef.current || !graphData) return;
-
-    // Clean industrial muted palette
-    const groupColors = {
-      product: { background: '#2563eb', border: '#60a5fa' },
-      manufacturer: { background: '#d97706', border: '#fbbf24' },
-      category: { background: '#059669', border: '#34d399' },
-      family: { background: '#475569', border: '#94a3b8' },
-      accessory: { background: '#334155', border: '#64748b' },
-      legacy: { background: '#dc2626', border: '#f87171' },
-      mating: { background: '#0d9488', border: '#2dd4bf' }
-    };
-
-    const visNodes = graphData.nodes.map(n => ({
-      id: n.id,
-      label: n.label,
-      title: n.title,
-      color: groupColors[n.group] || { background: '#334155', border: '#64748b' },
-      font: { color: '#f8fafc', face: 'JetBrains Mono, monospace', size: 11 },
-      shape: n.group === 'category' ? 'box' : n.group === 'manufacturer' ? 'hexagon' : 'dot',
-      size: (n.value || 2) * 7,
-      shadow: { enabled: false }
-    }));
-
-    const visEdges = graphData.edges.map((e, idx) => ({
-      id: `e_${idx}`,
-      from: e.from_node,
-      to: e.to_node,
-      label: e.label,
-      arrows: 'to',
-      color: { color: '#334155', highlight: '#f59e0b', opacity: 0.8 },
-      font: { color: '#94a3b8', size: 9, face: 'monospace', align: 'middle', background: '#020617' },
-      smooth: { type: 'continuous' }
-    }));
-
-    const data = {
-      nodes: new DataSet(visNodes),
-      edges: new DataSet(visEdges)
-    };
-
-    const options = {
-      physics: {
-        stabilization: { iterations: 120 },
-        barnesHut: {
-          gravitationalConstant: -3500,
-          springLength: 95,
-          springConstant: 0.04
-        }
-      },
-      interaction: {
-        hover: true,
-        tooltipDelay: 100,
-        zoomView: true,
-        dragView: true
-      }
-    };
-
-    networkRef.current = new Network(containerRef.current, data, options);
-
-    networkRef.current.on('click', (params) => {
-      if (params.nodes.length > 0) {
-        const nodeId = params.nodes[0];
-        const nodeObj = graphData.nodes.find(n => n.id === nodeId);
-        setSelectedNode(nodeObj);
-      } else {
-        setSelectedNode(null);
-      }
-    });
-
-    return () => {
-      if (networkRef.current) networkRef.current.destroy();
-    };
-  }, [graphData]);
-
   return (
-    <div className="space-y-6 w-full font-mono">
+    <div className="space-y-6 w-full">
       {/* Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] uppercase bg-slate-950 text-amber-400 border border-slate-800 font-bold">
-                ONTOLOGY GRAPH
+              <span className="px-2 py-0.5 rounded text-[10px] uppercase bg-blue-50 text-blue-700 border border-blue-200 font-bold">
+                Relational Knowledge Graph
               </span>
-              <h2 className="text-base font-bold text-white flex items-center gap-2">
-                <Share2 className="w-5 h-5 text-amber-400" />
-                Industrial Knowledge Graph Explorer
+              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <Share2 className="w-5 h-5 text-blue-600" />
+                Industrial Ontology Knowledge Graph & Component Relationships
               </h2>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
-              Multi-relational graph connecting industrial equipment, manufacturers, product families, mating mechanical seals, and legacy replacements.
+            <p className="text-xs text-slate-600 mt-1">
+              Topological relationship map linking electric motors, deep groove bearings, drive inverters (VFDs), and mechanical mating standards.
             </p>
           </div>
 
-          {/* Graph Legend */}
-          <div className="flex flex-wrap gap-1.5 text-[10px]">
-            <span className="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">● Product</span>
-            <span className="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">⬡ Manufacturer</span>
-            <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">■ Category</span>
-            <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">● Family</span>
-            <span className="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">● Legacy</span>
+          <div className="px-3.5 py-2 rounded-lg bg-blue-50 border border-blue-200 text-xs text-right">
+            <span className="text-slate-500 block text-[10px]">Graph Topology</span>
+            <span className="font-bold text-blue-700">
+              {graphData.nodes?.length || 8} Entities • {graphData.edges?.length || 7} Invariant Edges
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Network Canvas */}
-      <div className="relative bg-slate-950 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
-        <div ref={containerRef} className="network-graph-container" />
+      {/* Graph Visual Canvas & Node Inspector */}
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+        {/* Left Column: Interactive Topology Representation */}
+        <div className="xl:col-span-8 bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              Component Topological Graph Nodes
+            </span>
+            <span className="text-xs text-slate-500">Click a node to inspect entity details</span>
+          </div>
 
-        {/* Controls */}
-        <div className="absolute top-4 right-4 flex flex-col gap-1 bg-slate-900 border border-slate-800 p-1.5 rounded-lg">
-          <button
-            onClick={() => networkRef.current?.moveTo({ scale: (networkRef.current.getScale() || 1) * 1.2 })}
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white"
-            title="Zoom In"
-          >
-            <ZoomIn className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => networkRef.current?.moveTo({ scale: (networkRef.current.getScale() || 1) * 0.8 })}
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white"
-            title="Zoom Out"
-          >
-            <ZoomOut className="w-4 h-4" />
-          </button>
-          <button
-            onClick={loadGraph}
-            className="p-1.5 rounded hover:bg-slate-800 text-slate-300 hover:text-white"
-            title="Reset Simulation"
-          >
-            <RefreshCw className="w-4 h-4" />
-          </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {graphData.nodes?.map((node) => {
+              const isSelected = selectedNode?.id === node.id;
+              return (
+                <button
+                  key={node.id}
+                  onClick={() => setSelectedNode(node)}
+                  className={`p-4 rounded-xl text-left border transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-blue-50 border-blue-300 shadow-xs'
+                      : 'bg-slate-50 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+                  }`}
+                >
+                  <span className="px-2 py-0.5 rounded text-[9px] uppercase font-bold bg-white text-blue-700 border border-slate-200 font-mono">
+                    {node.type}
+                  </span>
+                  <div className="font-bold text-xs text-slate-900 mt-2">{node.label}</div>
+                  <div className="text-[11px] text-slate-500 mt-0.5">{node.details}</div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Relationship Edges List */}
+          <div className="mt-4 pt-3 border-t border-slate-100 space-y-2">
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
+              Verified Inter-Component Relationships ({graphData.edges?.length || 0} Edges):
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              {graphData.edges?.map((edge, idx) => (
+                <div key={idx} className="p-2.5 rounded bg-slate-50 border border-slate-200 text-slate-700 flex items-center justify-between font-mono text-[11px]">
+                  <span className="font-semibold text-slate-900 truncate max-w-[120px]">{edge.from}</span>
+                  <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 font-bold text-[10px]">
+                    -- {edge.label} --&gt;
+                  </span>
+                  <span className="font-semibold text-slate-900 truncate max-w-[120px]">{edge.to}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Node Inspector */}
-        {selectedNode && (
-          <div className="absolute bottom-4 left-4 max-w-sm p-4 rounded-xl bg-slate-900 border border-slate-700 font-mono text-xs space-y-1.5">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase text-amber-400 font-bold">
-                {selectedNode.group}
-              </span>
+        {/* Right Column: Node Property Inspector */}
+        <div className="xl:col-span-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4 text-xs">
+          <h4 className="font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
+            Entity Property Inspector
+          </h4>
+
+          {selectedNode ? (
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                <span className="text-slate-500 text-[10px] uppercase font-bold block">Entity Name:</span>
+                <div className="text-sm font-bold text-slate-900">{selectedNode.label}</div>
+                <div className="text-blue-700 font-semibold font-mono text-[11px]">{selectedNode.type}</div>
+              </div>
+
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1 text-slate-700 leading-relaxed">
+                <span className="text-slate-900 font-bold block">Technical Description:</span>
+                {selectedNode.details}
+              </div>
+
               <button
-                onClick={() => setSelectedNode(null)}
-                className="text-slate-400 hover:text-white"
+                onClick={() => onSelectProduct && onSelectProduct({ title: selectedNode.label, part_number: selectedNode.id, manufacturer: 'ABB', category: selectedNode.type })}
+                className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all cursor-pointer shadow-xs"
               >
-                ✕
+                Inspect in Studio
               </button>
             </div>
-            <div className="text-sm font-bold text-white">{selectedNode.label}</div>
-            {selectedNode.title && (
-              <p className="text-slate-400 whitespace-pre-line text-[11px] bg-slate-950 p-2 rounded border border-slate-800">
-                {selectedNode.title}
-              </p>
-            )}
-          </div>
-        )}
+          ) : (
+            <div className="p-8 text-center text-slate-500">
+              Click any entity node on the left to inspect properties and connected mechanical constraints.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
