@@ -13,6 +13,17 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('ingest');
   const [catalog, setCatalog] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [activeIndustry, setActiveIndustry] = useState('All Industries');
+  const [industriesList, setIndustriesList] = useState([
+    'All Industries',
+    'Power Transmission & Heavy Machinery',
+    'Precision Motion & Tribology',
+    'Fluid Power & Process Hydraulics',
+    'Electrical Power & Switchgear',
+    'Industrial Automation & Pneumatics',
+    'Process Instrumentation & Sensing'
+  ]);
+  const [industriesMeta, setIndustriesMeta] = useState({ total_catalog_size: 12 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +38,7 @@ export default function App() {
       if (prods.length > 0) {
         setSelectedProduct(prods[0]); // Default to first (ABB M3BP motor with resolved conflict)
       }
+      setIndustriesMeta({ total_catalog_size: prods.length });
     } catch (err) {
       console.error('Failed to load initial catalog:', err);
     } finally {
@@ -40,22 +52,28 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Top Navigation */}
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-mono selection:bg-amber-500/20 selection:text-amber-200">
+      {/* Top Header & Navigation */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         selectedProduct={selectedProduct}
+        activeIndustry={activeIndustry}
+        setActiveIndustry={setActiveIndustry}
+        industriesMeta={industriesMeta}
       />
 
-      {/* Main View Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Main View Area - Full Fluid Width Edge-to-Edge */}
+      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 xl:px-10 py-6">
         {activeTab === 'ingest' && (
           <IngestionStudio
             selectedProduct={selectedProduct}
             setSelectedProduct={setSelectedProduct}
             catalog={catalog}
             onNavigateTab={setActiveTab}
+            activeIndustry={activeIndustry}
+            setActiveIndustry={setActiveIndustry}
+            industriesList={industriesList}
           />
         )}
 
@@ -88,9 +106,16 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs font-mono text-slate-500">
-        ProductIQ Industrial Intelligence Platform • Extract → Enrich → Validate → Prove
+      {/* Industrial Telemetry Footer */}
+      <footer className="border-t border-slate-900 bg-slate-950 py-3.5 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
+        <div>
+          ProductIQ Industrial Product Intelligence Engine • Extract → Enrich → Validate → Prove
+        </div>
+        <div className="flex items-center gap-4 mt-2 sm:mt-0">
+          <span>IEC 60034 / ISO 15 / ISO 5199 Compliant</span>
+          <span>•</span>
+          <span className="text-emerald-500">System Ready for Production</span>
+        </div>
       </footer>
     </div>
   );

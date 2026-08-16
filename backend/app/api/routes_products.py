@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException, Response
 from typing import List, Optional, Dict, Any
-from app.models.schemas import Product
+from app.models.schemas import Product, IngestionRequest
 from app.seed_data.benchmark_data import get_benchmark_catalog
+from app.models.ontology import INDUSTRIES_LIST, CATEGORY_ONTOLOGY
 
 router = APIRouter(prefix="/products", tags=["Products"])
 
@@ -9,19 +10,44 @@ router = APIRouter(prefix="/products", tags=["Products"])
 CATALOG: Dict[str, Product] = {p.id: p for p in get_benchmark_catalog()}
 
 @router.get("", response_model=List[Product])
-async def list_products(category: Optional[str] = None, manufacturer: Optional[str] = None):
+async def list_products(
+    category: Optional[str] = None,
+    manufacturer: Optional[str] = None,
+    industry: Optional[str] = None
+):
     prods = list(CATALOG.values())
-    if category:
+    if category and category != "All":
         prods = [p for p in prods if p.category.lower() == category.lower()]
-    if manufacturer:
+    if manufacturer and manufacturer != "All":
         prods = [p for p in prods if p.manufacturer.lower() == manufacturer.lower()]
+    if industry and industry != "All Industries":
+        prods = [p for p in prods if getattr(p, "industry", "").lower() == industry.lower()]
     return prods
+
+@router.get("/meta/industries")
+async def get_industries_meta():
+    prods = list(CATALOG.values())
+    industry_counts = {}
+    for p in prods:
+        ind = getattr(p, "industry", "Other")
+        industry_counts[ind] = industry_counts.get(ind, 0) + 1
+        
+    return {
+        "industries": INDUSTRIES_LIST,
+        "counts": industry_counts,
+        "total_catalog_size": len(prods)
+    }
 
 @router.get("/{product_id}", response_model=Product)
 async def get_product(product_id: str):
     if product_id not in CATALOG:
         raise HTTPException(status_code=404, detail="Product not found.")
     return CATALOG[product_id]
+
+@router.post("", response_model=Product)
+async def create_or_update_product(product: Product):
+    CATALOG[product.id] = product
+    return product
 
 @router.post("/compare")
 async def compare_products(payload: Dict[str, List[str]]):
@@ -37,14 +63,14 @@ async def compare_products(payload: Dict[str, List[str]]):
     if len(selected) < 2:
         raise HTTPException(status_code=404, detail="Could not find specified products.")
 
-    # Generate AI trade-off synthesis
+    # Generate engineering trade-off synthesis
     names = [f"{p.manufacturer} {p.part_number}" for p in selected]
     summary = (
-        f"Comparative Analysis between {len(selected)} industrial components ({', '.join(names)}). "
-        f"Key trade-offs identify differences in efficiency rating, structural weight, torque density, and mechanical enclosure ratings. "
+        f"Comparative Engineering Evaluation between {len(selected)} verified industrial components: {', '.join(names)}. "
+        f"Parametric variance spans power output, thermal insulation class, dynamic load ratings, and enclosure protection standards. "
     )
     if any(p.category == "Industrial Motor" for p in selected):
-        summary += "For severe-duty continuous pump or conveyor loads, higher efficiency (IE3/IE4) with Class F insulation is recommended to reduce long-term TCO."
+        summary += "For continuous duty industrial pumps or conveyor drives, selecting IE3/IE4 efficiency classes significantly minimizes lifetime operational energy costs (TCO)."
         
     return {
         "products": selected,

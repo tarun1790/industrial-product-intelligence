@@ -79,6 +79,7 @@ class Product(BaseModel):
     manufacturer: str
     product_family: str
     category: str # "Industrial Motor", "Rolling Bearing", "Centrifugal Pump", "Pneumatic Actuator", "Circuit Breaker", "Industrial Sensor"
+    industry: str = "Power Transmission & Heavy Machinery"
     series: Optional[str] = None
     title: str
     status: str = "VERIFIED" # "RAW", "ENRICHED", "VERIFIED", "CONFLICT_FLAGGED"
