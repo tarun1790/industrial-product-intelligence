@@ -56,16 +56,6 @@ export async function searchParametric(query, filters = {}) {
   return await res.json();
 }
 
-export async function compareProducts(productIds) {
-  const res = await fetch(`${API_BASE}/products/compare`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ product_ids: productIds })
-  });
-  if (!res.ok) throw new Error('Compare failed');
-  return await res.json();
-}
-
 export async function fetchInterchange(partNumber) {
   try {
     const res = await fetch(`${API_BASE}/advanced/interchange/${encodeURIComponent(partNumber)}`);
@@ -204,6 +194,27 @@ export async function fetchMultiAgentConsensus(partNumber, manufacturer) {
     console.error('Multi-agent error:', err);
     return null;
   }
+}
+
+export async function fetchIndustryProfiles() {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/industries`);
+    if (!res.ok) throw new Error('Failed to fetch industries');
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+}
+
+export async function synthesizeIndustrySchema(payload) {
+  const res = await fetch(`${API_BASE}/advanced/industries/synthesize`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Synthesis failed');
+  return await res.json();
 }
 
 export async function fetchMotorCurves(payload) {

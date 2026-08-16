@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2 } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -24,7 +24,8 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'history', label: '12. History', icon: History, badge: 'Timeline' },
     { id: 'catalog_health', label: '13. Catalog & HITL', icon: BarChart3, badge: 'HITL' },
 
-    // Core Extensions
+    // Universal Cross-Industry Extensions
+    { id: 'industry_adapters', label: 'Multi-Industry', icon: Factory, badge: 'Universal' },
     { id: 'dpp', label: 'Digital Passport', icon: Leaf },
     { id: 'weibull', label: 'Reliability Curve', icon: Activity },
     { id: 'interchange', label: 'Cross-Reference', icon: ArrowLeftRight },
@@ -42,24 +43,24 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5 text-slate-800 font-semibold">
             <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-            ProductIQ Decision Engine • Online
+            ProductIQ Universal Decision Engine • Online
           </span>
           <span className="hidden md:inline text-slate-300">|</span>
           <span className="hidden md:inline text-slate-600">
-            Axiom Solver: Active (IEC 60034 / ISO 15)
+            Cross-Industry: Pharma, Oil&Gas, Aerospace, Semi, Power
           </span>
           <span className="hidden lg:inline text-slate-300">|</span>
           <span className="hidden lg:inline text-blue-700 font-medium">
-            Benchmark Precision: 98.7% (Ground-Truth Verified)
+            Zero-Code Schema Synthesizer Active
           </span>
         </div>
 
         <div className="flex items-center gap-2.5">
           <span className="px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-700 font-medium text-[11px]">
-            CUDA Accelerated
+            CUDA GPU
           </span>
           <span className="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-700 font-medium text-[11px]">
-            ESPR Ready
+            Universal Adapter
           </span>
         </div>
       </div>
@@ -78,7 +79,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-bold text-base text-slate-900 tracking-tight">Product<span className="text-blue-600">IQ</span></span>
                 <span className="px-1.5 py-0.2 rounded text-[10px] bg-slate-100 text-slate-600 font-semibold border border-slate-200">
-                  Enterprise
+                  Universal Multi-Industry
                 </span>
               </div>
             </div>

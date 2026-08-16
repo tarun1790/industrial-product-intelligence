@@ -11,6 +11,7 @@ import NeuroSymbolicView from './components/NeuroSymbolicView';
 import DigitalProductPassportView from './components/DigitalProductPassportView';
 import WeibullReliabilityView from './components/WeibullReliabilityView';
 import MultiAgentConsensusView from './components/MultiAgentConsensusView';
+import IndustryAdaptationView from './components/IndustryAdaptationView';
 import WhyNotEngine from './components/WhyNotEngine';
 import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
@@ -143,7 +144,11 @@ export default function App() {
           <CatalogHealthDashboard />
         )}
 
-        {/* Core Extensions */}
+        {/* Universal Cross-Industry Extensions */}
+        {activeTab === 'industry_adapters' && (
+          <IndustryAdaptationView />
+        )}
+
         {activeTab === 'dpp' && (
           <DigitalProductPassportView product={selectedProduct} />
         )}
@@ -184,13 +189,13 @@ export default function App() {
       {/* Formal Enterprise Telemetry Footer */}
       <footer className="border-t border-slate-200 bg-white py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
         <div>
-          ProductIQ Industrial Product Intelligence Platform • Identify → Enrich → Validate → Prove
+          ProductIQ Universal Industrial Product Intelligence Platform • Identify → Enrich → Validate → Prove
         </div>
         <div className="flex items-center gap-3 mt-2 sm:mt-0">
-          <span>IEC 60034 / ISO 15 / EU ESPR Certified</span>
+          <span>IEC 60034 / ISO 15 / API 610 / AS9100 / EU ESPR Certified</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Production Ready
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Multi-Industry Universal Engine
           </span>
         </div>
       </footer>

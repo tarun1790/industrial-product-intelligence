@@ -13,6 +13,7 @@ from app.engine.neuro_symbolic import NeuroSymbolicReasoner
 from app.engine.dpp_sustainability import DigitalProductPassportEngine
 from app.engine.reliability_weibull import WeibullReliabilityEngine
 from app.engine.multi_agent_consensus import MultiAgentConsensusProtocol
+from app.engine.industry_adapter import IndustryAdapterEngine, IndustryProfile
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -21,6 +22,17 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/industries", response_model=List[IndustryProfile])
+async def get_all_industry_profiles():
+    return IndustryAdapterEngine.get_all_industries()
+
+@router.post("/industries/synthesize")
+async def synthesize_any_industry_schema(payload: Dict[str, Any]):
+    ind_name = payload.get("industry_name", "Cryogenic LNG & Gas Distribution")
+    cat_name = payload.get("category_name", "Cryogenic Butterfly Valve")
+    standards = payload.get("governing_standards", ["ISO 28921-1", "BS 6364 Cryogenic Testing", "ASME B16.34"])
+    return IndustryAdapterEngine.generate_custom_ontology_for_any_industry(ind_name, cat_name, standards)
 
 @router.get("/neuro-symbolic")
 async def get_neuro_symbolic_proof(product_type: str = "3-Phase Induction Motor"):
