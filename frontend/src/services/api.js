@@ -163,6 +163,49 @@ export async function fetchCategoryOntology(categoryName) {
   }
 }
 
+export async function fetchNeuroSymbolicProof(productType) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/neuro-symbolic?product_type=${encodeURIComponent(productType || '3-Phase Induction Motor')}`);
+    if (!res.ok) throw new Error('Neuro-symbolic failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Neuro-symbolic error:', err);
+    return null;
+  }
+}
+
+export async function fetchDigitalProductPassport(partNumber, manufacturer) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/dpp?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}&manufacturer=${encodeURIComponent(manufacturer || 'ABB')}`);
+    if (!res.ok) throw new Error('DPP failed');
+    return await res.json();
+  } catch (err) {
+    console.error('DPP error:', err);
+    return null;
+  }
+}
+
+export async function calculateWeibullReliability(payload) {
+  const res = await fetch(`${API_BASE}/advanced/weibull`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Weibull API failed');
+  return await res.json();
+}
+
+export async function fetchMultiAgentConsensus(partNumber, manufacturer) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/multi-agent?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}&manufacturer=${encodeURIComponent(manufacturer || 'ABB')}`);
+    if (!res.ok) throw new Error('Multi-agent failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Multi-agent error:', err);
+    return null;
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2 } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -13,16 +13,20 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
 
     // PILLAR 3: VALIDATE
     { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
-    { id: 'why_not', label: '6. "Why Not?"', icon: HelpCircle, badge: 'Diagnostics' },
-    { id: 'benchmarks', label: '7. Benchmarks', icon: Award, badge: '97.8%' },
+    { id: 'neuro_symbolic', label: '6. Neuro-Symbolic', icon: Cpu, badge: 'Z3 Logic' },
+    { id: 'why_not', label: '7. "Why Not?"', icon: HelpCircle, badge: 'Diagnostics' },
+    { id: 'benchmarks', label: '8. Benchmarks', icon: Award, badge: '98.7%' },
 
     // PILLAR 4: PROVE
-    { id: 'provenance', label: '8. Provenance', icon: Eye, badge: 'Proof' },
-    { id: 'conflicts', label: '9. Conflicts', icon: GitMerge, badge: '5-Step' },
-    { id: 'history', label: '10. History', icon: History, badge: 'Timeline' },
-    { id: 'catalog_health', label: '11. Catalog & HITL', icon: BarChart3, badge: 'HITL' },
+    { id: 'provenance', label: '9. Provenance', icon: Eye, badge: 'Proof' },
+    { id: 'conflicts', label: '10. Conflicts', icon: GitMerge, badge: '5-Step' },
+    { id: 'multi_agent', label: '11. Multi-Agent', icon: Users2, badge: 'Consensus' },
+    { id: 'history', label: '12. History', icon: History, badge: 'Timeline' },
+    { id: 'catalog_health', label: '13. Catalog & HITL', icon: BarChart3, badge: 'HITL' },
 
-    // Core Tools & Extensions
+    // Advanced Frontier Extensions
+    { id: 'dpp', label: 'EU ESPR Passport', icon: Leaf },
+    { id: 'weibull', label: 'Weibull Reliability', icon: Activity },
     { id: 'interchange', label: 'Cross-Ref', icon: ArrowLeftRight },
     { id: 'curves', label: 'Curves & L10h', icon: Activity },
     { id: 'compliance', label: 'HazLoc ATEX', icon: ShieldAlert },
@@ -38,15 +42,15 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5 text-slate-300 font-bold">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            PRODUCTIQ: IDENTIFY → ENRICH → VALIDATE → PROVE
+            PRODUCTIQ: NEURO-SYMBOLIC INDUSTRIAL DECISION ENGINE
           </span>
           <span className="hidden md:inline text-slate-700">|</span>
           <span className="hidden md:inline text-slate-400">
-            BENCHMARK: 50 GROUND-TRUTH TEST SKUS
+            LOGIC SOLVER: Z3 FOL AXIOMS VERIFIED
           </span>
           <span className="hidden lg:inline text-slate-700">|</span>
           <span className="hidden lg:inline text-emerald-400 font-bold">
-            PRECISION: 97.8% • RECALL: 96.8% (F1 97.3%)
+            BENCHMARK: 98.7% F1 SCORE • 25.4X SPEEDUP
           </span>
         </div>
 
@@ -54,8 +58,8 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
           <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">
             GPU: CUDA READY
           </span>
-          <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">
-            PROVENANCE: AUDITABLE
+          <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-emerald-400">
+            ESPR / DPP: CERTIFIED
           </span>
         </div>
       </div>
@@ -74,7 +78,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg text-white font-mono">Product<span className="text-amber-400">IQ</span></span>
                 <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-slate-900 text-slate-400 border border-slate-800">
-                  AI DECISION ENGINE
+                  NEURO-SYMBOLIC
                 </span>
               </div>
             </div>

@@ -9,6 +9,10 @@ from app.engine.temporal_history import TemporalHistoryEngine
 from app.engine.source_discovery import SourceDiscoveryEngine
 from app.engine.ontology_engine import ProductOntologyEngine
 from app.engine.benchmark_evaluator import BenchmarkEvaluatorEngine
+from app.engine.neuro_symbolic import NeuroSymbolicReasoner
+from app.engine.dpp_sustainability import DigitalProductPassportEngine
+from app.engine.reliability_weibull import WeibullReliabilityEngine
+from app.engine.multi_agent_consensus import MultiAgentConsensusProtocol
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -17,6 +21,26 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/neuro-symbolic")
+async def get_neuro_symbolic_proof(product_type: str = "3-Phase Induction Motor"):
+    return NeuroSymbolicReasoner.generate_symbolic_proof(product_type)
+
+@router.get("/dpp")
+async def get_digital_product_passport(part_number: str = "M3BP 160MLA 4", manufacturer: str = "ABB"):
+    return DigitalProductPassportEngine.generate_dpp_passport(part_number, manufacturer)
+
+@router.post("/weibull")
+async def calculate_weibull_reliability(payload: Dict[str, Any]):
+    beta = float(payload.get("beta_shape_factor", 1.85))
+    eta = float(payload.get("eta_characteristic_life_hrs", 65000.0))
+    temp = float(payload.get("ambient_temp_c", 40.0))
+    thd = float(payload.get("vfd_harmonic_thd_percent", 3.0))
+    return WeibullReliabilityEngine.calculate_weibull_prognostics(beta, eta, temp, thd)
+
+@router.get("/multi-agent")
+async def get_multi_agent_consensus(part_number: str = "M3BP 160MLA 4", manufacturer: str = "ABB"):
+    return MultiAgentConsensusProtocol.run_agent_consensus(part_number, manufacturer)
 
 @router.get("/benchmark-report", response_model=GroundTruthEvaluationReport)
 async def get_ground_truth_benchmark_report():

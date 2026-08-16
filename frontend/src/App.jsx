@@ -7,6 +7,10 @@ import AttributeTruthTable from './components/AttributeTruthTable';
 import ProvenanceInspector from './components/ProvenanceInspector';
 import ConflictResolver from './components/ConflictResolver';
 import ValidationReport from './components/ValidationReport';
+import NeuroSymbolicView from './components/NeuroSymbolicView';
+import DigitalProductPassportView from './components/DigitalProductPassportView';
+import WeibullReliabilityView from './components/WeibullReliabilityView';
+import MultiAgentConsensusView from './components/MultiAgentConsensusView';
 import WhyNotEngine from './components/WhyNotEngine';
 import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
@@ -106,6 +110,10 @@ export default function App() {
           <ValidationReport product={selectedProduct} />
         )}
 
+        {activeTab === 'neuro_symbolic' && (
+          <NeuroSymbolicView product={selectedProduct} />
+        )}
+
         {activeTab === 'why_not' && (
           <WhyNotEngine product={selectedProduct} />
         )}
@@ -123,6 +131,10 @@ export default function App() {
           <ConflictResolver product={selectedProduct} />
         )}
 
+        {activeTab === 'multi_agent' && (
+          <MultiAgentConsensusView product={selectedProduct} />
+        )}
+
         {activeTab === 'history' && (
           <TemporalTimeline product={selectedProduct} />
         )}
@@ -131,7 +143,15 @@ export default function App() {
           <CatalogHealthDashboard />
         )}
 
-        {/* Core Extension Tools */}
+        {/* Frontier Extensions */}
+        {activeTab === 'dpp' && (
+          <DigitalProductPassportView product={selectedProduct} />
+        )}
+
+        {activeTab === 'weibull' && (
+          <WeibullReliabilityView product={selectedProduct} />
+        )}
+
         {activeTab === 'interchange' && (
           <InterchangeEngine product={selectedProduct} onSelectProduct={handleSelectProduct} />
         )}
@@ -164,10 +184,10 @@ export default function App() {
       {/* Industrial Telemetry Footer */}
       <footer className="border-t border-slate-900 bg-slate-950 py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
         <div>
-          ProductIQ Industrial Product Intelligence Engine • Identify → Enrich → Validate → Prove
+          ProductIQ Neuro-Symbolic Industrial Product Intelligence Platform • Identify → Enrich → Validate → Prove
         </div>
         <div className="flex items-center gap-4 mt-2 sm:mt-0">
-          <span>IEC 60034 / ISO 15 / ISO 5199 Compliant</span>
+          <span>IEC 60034 / ISO 15 / EU ESPR Compliant</span>
           <span>•</span>
           <span className="text-emerald-500">System Ready for Production</span>
         </div>
