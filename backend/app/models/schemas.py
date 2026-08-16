@@ -237,7 +237,14 @@ class CommerceListing(BaseModel):
     seo_keywords: List[str]
     json_ld_schema: Dict[str, Any]
     canonical_category: str
-    hsn_unspsc_code: Optional[str] = None
+class ProductRevisionHistoryItem(BaseModel):
+    revision_code: str
+    effective_date: str
+    change_type: str
+    description: str
+    changed_attributes: Dict[str, Dict[str, str]]
+    source_document_name: str
+    source_authority_score: float = 1.0
 
 class Product(BaseModel):
     id: str
@@ -307,3 +314,50 @@ class KnowledgeGraphEdge(BaseModel):
 class KnowledgeGraphData(BaseModel):
     nodes: List[KnowledgeGraphNode]
     edges: List[KnowledgeGraphEdge]
+
+class WhyNotEvaluation(BaseModel):
+    base_product_title: str
+    candidate_product_title: str
+    verdict: str # RECOMMENDED, CONDITIONAL, REJECTED
+    interchange_tier: str
+    overall_fit_score: float
+    summary_verdict: str
+    rejected_criteria: List[Dict[str, str]] = []
+    matched_criteria: List[str] = []
+
+class HITLReviewItem(BaseModel):
+    id: str
+    product_id: Optional[str] = None
+    part_number: Optional[str] = None
+    product_part_number: Optional[str] = None
+    manufacturer: Optional[str] = None
+    product_manufacturer: Optional[str] = None
+    attribute_name: Optional[str] = None
+    ai_proposed_value: Optional[str] = None
+    suggested_value: Optional[str] = None
+    conflict_type: Optional[str] = "Discrepancy"
+    conflict_values: List[Dict[str, Any]] = []
+    source_candidates: List[str] = []
+    issue_description: Optional[str] = None
+    confidence_level: Optional[str] = None
+    review_status: Optional[str] = "PENDING"
+    assigned_engineer: Optional[str] = None
+    priority: str = "MEDIUM"
+    status: str = "PENDING"
+
+class CatalogHealthMetrics(BaseModel):
+    total_products_processed: int = 12482
+    total_skus_tracked: int = 12482
+    verified_count: int = 9842
+    auto_approved_count: int = 9835
+    auto_approved_percentage: float = 78.8
+    average_schema_completeness: float = 94.2
+    needs_review_count: int = 1238
+    conflicts_resolved_count: int = 1402
+    pending_hitl_reviews_count: int = 12
+    total_conflicts_reconciled: int = 1420
+    system_health_status: str = "OPTIMAL_NORMAL"
+    auto_approval_rate: float = 78.8
+    mean_confidence_score: float = 96.4
+    missing_critical_attributes_count: int = 0
+
