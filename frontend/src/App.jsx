@@ -12,6 +12,7 @@ import DigitalProductPassportView from './components/DigitalProductPassportView'
 import WeibullReliabilityView from './components/WeibullReliabilityView';
 import MultiAgentConsensusView from './components/MultiAgentConsensusView';
 import IndustryAdaptationView from './components/IndustryAdaptationView';
+import SystemAssemblySimulator from './components/SystemAssemblySimulator';
 import WhyNotEngine from './components/WhyNotEngine';
 import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
@@ -36,9 +37,13 @@ export default function App() {
     'Fluid Power & Process Hydraulics',
     'Electrical Power & Switchgear',
     'Industrial Automation & Pneumatics',
-    'Process Instrumentation & Sensing'
+    'Process Instrumentation & Sensing',
+    'Sanitary Food & Bio-Pharma',
+    'Oil & Gas / Petrochemical',
+    'Aerospace & Defense Actuation',
+    'Cryogenic LNG & Clean Energy'
   ]);
-  const [industriesMeta, setIndustriesMeta] = useState({ total_catalog_size: 12 });
+  const [industriesMeta, setIndustriesMeta] = useState({ total_catalog_size: 16 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -67,7 +72,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       {/* Top Header & Navigation */}
       <Navbar
         activeTab={activeTab}
@@ -149,6 +154,10 @@ export default function App() {
           <IndustryAdaptationView />
         )}
 
+        {activeTab === 'system_assembly' && (
+          <SystemAssemblySimulator />
+        )}
+
         {activeTab === 'dpp' && (
           <DigitalProductPassportView product={selectedProduct} />
         )}
@@ -189,13 +198,13 @@ export default function App() {
       {/* Formal Enterprise Telemetry Footer */}
       <footer className="border-t border-slate-200 bg-white py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
         <div>
-          ProductIQ Universal Industrial Product Intelligence Platform • Identify → Enrich → Validate → Prove
+          ProductIQ Universal Industrial Decision Engine • 10 Sectors Connected
         </div>
         <div className="flex items-center gap-3 mt-2 sm:mt-0">
-          <span>IEC 60034 / ISO 15 / API 610 / AS9100 / EU ESPR Certified</span>
+          <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Multi-Industry Universal Engine
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Inter-Industry Digital Twin Active
           </span>
         </div>
       </footer>

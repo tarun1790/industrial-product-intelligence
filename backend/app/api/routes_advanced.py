@@ -14,6 +14,7 @@ from app.engine.dpp_sustainability import DigitalProductPassportEngine
 from app.engine.reliability_weibull import WeibullReliabilityEngine
 from app.engine.multi_agent_consensus import MultiAgentConsensusProtocol
 from app.engine.industry_adapter import IndustryAdapterEngine, IndustryProfile
+from app.engine.system_assembly_simulator import SystemAssemblySimulatorEngine, SystemAssemblyRequest, SystemAssemblyReport
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -22,6 +23,10 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.post("/system-assembly", response_model=SystemAssemblyReport)
+async def simulate_system_assembly(payload: SystemAssemblyRequest):
+    return SystemAssemblySimulatorEngine.simulate_inter_industry_assembly(payload)
 
 @router.get("/industries", response_model=List[IndustryProfile])
 async def get_all_industry_profiles():

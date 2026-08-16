@@ -217,6 +217,16 @@ export async function synthesizeIndustrySchema(payload) {
   return await res.json();
 }
 
+export async function simulateSystemAssembly(payload) {
+  const res = await fetch(`${API_BASE}/advanced/system-assembly`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Assembly simulation failed');
+  return await res.json();
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

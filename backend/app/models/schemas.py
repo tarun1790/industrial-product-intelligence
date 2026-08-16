@@ -316,8 +316,10 @@ class KnowledgeGraphData(BaseModel):
     edges: List[KnowledgeGraphEdge]
 
 class WhyNotEvaluation(BaseModel):
-    base_product_title: str
-    candidate_product_title: str
+    base_product_title: Optional[str] = None
+    candidate_product_title: Optional[str] = None
+    candidate_part_number: Optional[str] = None
+    candidate_manufacturer: Optional[str] = None
     verdict: str # RECOMMENDED, CONDITIONAL, REJECTED
     interchange_tier: str
     overall_fit_score: float

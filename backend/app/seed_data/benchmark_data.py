@@ -404,4 +404,8 @@ def get_benchmark_catalog() -> List[Product]:
     )
     catalog.append(p12)
 
+    # Merge Expanded 10-Industry Catalog Products
+    from app.engine.multi_industry_catalog import get_expanded_multi_industry_catalog
+    catalog.extend(get_expanded_multi_industry_catalog())
+
     return catalog
