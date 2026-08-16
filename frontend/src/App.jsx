@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import IngestionStudio from './components/IngestionStudio';
+import SourceDiscoveryView from './components/SourceDiscoveryView';
+import ProductOntologyView from './components/ProductOntologyView';
 import AttributeTruthTable from './components/AttributeTruthTable';
-import EvidenceViewer from './components/EvidenceViewer';
+import ProvenanceInspector from './components/ProvenanceInspector';
 import ConflictResolver from './components/ConflictResolver';
 import ValidationReport from './components/ValidationReport';
 import WhyNotEngine from './components/WhyNotEngine';
+import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
 import InterchangeEngine from './components/InterchangeEngine';
 import CatalogHealthDashboard from './components/CatalogHealthDashboard';
@@ -72,6 +75,7 @@ export default function App() {
 
       {/* Main View Area - Full Fluid Width Edge-to-Edge */}
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 xl:px-10 py-6">
+        {/* PILLAR 1: IDENTIFY */}
         {activeTab === 'ingest' && (
           <IngestionStudio
             selectedProduct={selectedProduct}
@@ -84,18 +88,20 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'sources' && (
+          <SourceDiscoveryView product={selectedProduct} />
+        )}
+
+        {/* PILLAR 2: ENRICH */}
+        {activeTab === 'ontology' && (
+          <ProductOntologyView product={selectedProduct} />
+        )}
+
         {activeTab === 'truth_table' && (
           <AttributeTruthTable product={selectedProduct} />
         )}
 
-        {activeTab === 'evidence' && (
-          <EvidenceViewer product={selectedProduct} />
-        )}
-
-        {activeTab === 'conflicts' && (
-          <ConflictResolver product={selectedProduct} />
-        )}
-
+        {/* PILLAR 3: VALIDATE */}
         {activeTab === 'validation' && (
           <ValidationReport product={selectedProduct} />
         )}
@@ -104,16 +110,30 @@ export default function App() {
           <WhyNotEngine product={selectedProduct} />
         )}
 
+        {activeTab === 'benchmarks' && (
+          <BenchmarkReport />
+        )}
+
+        {/* PILLAR 4: PROVE */}
+        {activeTab === 'provenance' && (
+          <ProvenanceInspector product={selectedProduct} onNavigateTab={setActiveTab} />
+        )}
+
+        {activeTab === 'conflicts' && (
+          <ConflictResolver product={selectedProduct} />
+        )}
+
         {activeTab === 'history' && (
           <TemporalTimeline product={selectedProduct} />
         )}
 
-        {activeTab === 'interchange' && (
-          <InterchangeEngine product={selectedProduct} onSelectProduct={handleSelectProduct} />
-        )}
-
         {activeTab === 'catalog_health' && (
           <CatalogHealthDashboard />
+        )}
+
+        {/* Core Extension Tools */}
+        {activeTab === 'interchange' && (
+          <InterchangeEngine product={selectedProduct} onSelectProduct={handleSelectProduct} />
         )}
 
         {activeTab === 'curves' && (
@@ -144,7 +164,7 @@ export default function App() {
       {/* Industrial Telemetry Footer */}
       <footer className="border-t border-slate-900 bg-slate-950 py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
         <div>
-          ProductIQ Industrial Product Intelligence Engine • Extract → Enrich → Validate → Prove
+          ProductIQ Industrial Product Intelligence Engine • Identify → Enrich → Validate → Prove
         </div>
         <div className="flex items-center gap-4 mt-2 sm:mt-0">
           <span>IEC 60034 / ISO 15 / ISO 5199 Compliant</span>

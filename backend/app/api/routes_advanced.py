@@ -6,10 +6,29 @@ from app.engine.compliance import ComplianceEngine
 from app.engine.why_not_engine import WhyNotEngine
 from app.engine.catalog_health import CatalogHealthEngine
 from app.engine.temporal_history import TemporalHistoryEngine
-from app.models.schemas import WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem, ProductRevisionHistoryItem
+from app.engine.source_discovery import SourceDiscoveryEngine
+from app.engine.ontology_engine import ProductOntologyEngine
+from app.engine.benchmark_evaluator import BenchmarkEvaluatorEngine
+from app.models.schemas import (
+    WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
+    ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
+    GroundTruthEvaluationReport
+)
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/benchmark-report", response_model=GroundTruthEvaluationReport)
+async def get_ground_truth_benchmark_report():
+    return BenchmarkEvaluatorEngine.get_ground_truth_report()
+
+@router.get("/sources/{part_number}", response_model=SourceDiscoveryReport)
+async def get_discovered_sources(part_number: str, manufacturer: str = "ABB"):
+    return SourceDiscoveryEngine.discover_sources_for_product(part_number, manufacturer)
+
+@router.get("/ontology/{category_name}", response_model=CategoryOntologySchema)
+async def get_category_ontology_schema(category_name: str):
+    return ProductOntologyEngine.get_schema_for_category(category_name)
 
 @router.get("/interchange/{part_number}")
 async def get_interchange_equivalents(part_number: str):

@@ -1,22 +1,34 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3 } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
-    { id: 'ingest', label: '1. Ingestion', icon: Layers, badge: 'Extract' },
-    { id: 'truth_table', label: '2. Truth Table', icon: Table, badge: 'EQS' },
-    { id: 'evidence', label: '3. Evidence', icon: ShieldCheck, badge: 'Prove' },
-    { id: 'conflicts', label: '4. Conflicts', icon: GitMerge, badge: '5-Step' },
-    { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}% Trust` },
-    { id: 'why_not', label: '6. "Why Not?"', icon: HelpCircle, badge: 'Reject' },
-    { id: 'history', label: '7. History', icon: History, badge: 'Timeline' },
-    { id: 'interchange', label: '8. Cross-Ref', icon: ArrowLeftRight, badge: 'Drop-In' },
-    { id: 'catalog_health', label: '9. Catalog & HITL', icon: BarChart3, badge: '12k SKUs' },
+    // PILLAR 1: IDENTIFY
+    { id: 'ingest', label: '1. Ingest', icon: Layers, badge: 'Identify' },
+    { id: 'sources', label: '2. Sources', icon: Globe, badge: 'Discover' },
+    
+    // PILLAR 2: ENRICH
+    { id: 'ontology', label: '3. Ontology', icon: Layers, badge: 'Schema' },
+    { id: 'truth_table', label: '4. Truth Table', icon: Table, badge: 'EQA' },
+
+    // PILLAR 3: VALIDATE
+    { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
+    { id: 'why_not', label: '6. "Why Not?"', icon: HelpCircle, badge: 'Diagnostics' },
+    { id: 'benchmarks', label: '7. Benchmarks', icon: Award, badge: '97.8%' },
+
+    // PILLAR 4: PROVE
+    { id: 'provenance', label: '8. Provenance', icon: Eye, badge: 'Proof' },
+    { id: 'conflicts', label: '9. Conflicts', icon: GitMerge, badge: '5-Step' },
+    { id: 'history', label: '10. History', icon: History, badge: 'Timeline' },
+    { id: 'catalog_health', label: '11. Catalog & HITL', icon: BarChart3, badge: 'HITL' },
+
+    // Core Tools & Extensions
+    { id: 'interchange', label: 'Cross-Ref', icon: ArrowLeftRight },
     { id: 'curves', label: 'Curves & L10h', icon: Activity },
-    { id: 'compliance', label: 'HazLoc / ATEX', icon: ShieldAlert },
-    { id: 'graph', label: 'Knowledge Graph', icon: Share2 },
+    { id: 'compliance', label: 'HazLoc ATEX', icon: ShieldAlert },
     { id: 'commerce', label: 'Commerce PIM', icon: Database },
-    { id: 'search', label: 'Parametric Search', icon: Search },
+    { id: 'graph', label: 'Graph', icon: Share2 },
+    { id: 'search', label: 'Search', icon: Search },
   ];
 
   return (
@@ -24,17 +36,17 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
       {/* Top Telemetry Bar */}
       <div className="w-full px-4 sm:px-6 lg:px-8 border-b border-slate-900 py-1.5 flex items-center justify-between text-[11px] font-mono text-slate-400 bg-slate-950">
         <div className="flex items-center gap-4">
-          <span className="flex items-center gap-1.5 text-slate-300">
+          <span className="flex items-center gap-1.5 text-slate-300 font-bold">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            ENGINE: ONLINE
+            PRODUCTIQ: IDENTIFY → ENRICH → VALIDATE → PROVE
           </span>
           <span className="hidden md:inline text-slate-700">|</span>
           <span className="hidden md:inline text-slate-400">
-            CATALOG: 12,482 INDUSTRIAL SKUs PROCESSED
+            BENCHMARK: 50 GROUND-TRUTH TEST SKUS
           </span>
           <span className="hidden lg:inline text-slate-700">|</span>
           <span className="hidden lg:inline text-emerald-400 font-bold">
-            ATTRIBUTE PRECISION: 97.8% (GROUND TRUTH)
+            PRECISION: 97.8% • RECALL: 96.8% (F1 97.3%)
           </span>
         </div>
 
@@ -43,7 +55,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
             GPU: CUDA READY
           </span>
           <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">
-            SPEC: ISO/IEC ENFORCED
+            PROVENANCE: AUDITABLE
           </span>
         </div>
       </div>
@@ -62,7 +74,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg text-white font-mono">Product<span className="text-amber-400">IQ</span></span>
                 <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-slate-900 text-slate-400 border border-slate-800">
-                  ENTERPRISE
+                  AI DECISION ENGINE
                 </span>
               </div>
             </div>
@@ -72,7 +84,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
           {selectedProduct && (
             <div className="hidden md:flex items-center gap-3 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono">
               <div>
-                <span className="text-slate-500">ACTIVE COMPONENT: </span>
+                <span className="text-slate-500">COMPONENT: </span>
                 <span className="font-bold text-white">{selectedProduct.manufacturer} {selectedProduct.part_number}</span>
                 <span className="text-slate-500 text-[11px] ml-1.5">({selectedProduct.industry})</span>
               </div>

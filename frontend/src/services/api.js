@@ -130,6 +130,39 @@ export async function fetchProductHistory(partNumber) {
   }
 }
 
+export async function fetchBenchmarkReport() {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/benchmark-report`);
+    if (!res.ok) throw new Error('Benchmark report failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Benchmark report error:', err);
+    return null;
+  }
+}
+
+export async function fetchDiscoveredSources(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/sources/${encodeURIComponent(partNumber)}`);
+    if (!res.ok) throw new Error('Sources discovery failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Sources API error:', err);
+    return null;
+  }
+}
+
+export async function fetchCategoryOntology(categoryName) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/ontology/${encodeURIComponent(categoryName)}`);
+    if (!res.ok) throw new Error('Ontology failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Ontology API error:', err);
+    return null;
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',
