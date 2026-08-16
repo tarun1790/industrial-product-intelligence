@@ -12,8 +12,20 @@
     color: #0f172a;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #0f172a;
+  }
+
+  h1 { font-size: 1.75rem; line-height: 2.25rem; font-weight: 900; }
+  h2 { font-size: 1.35rem; line-height: 1.85rem; font-weight: 800; }
+  h3 { font-size: 1.1rem; line-height: 1.5rem; font-weight: 800; }
+  h4 { font-size: 0.95rem; line-height: 1.35rem; font-weight: 700; }
 
   code, pre, .font-mono {
     font-family: var(--font-mono);
@@ -22,23 +34,23 @@
 
 /* Glass & Card Tokens */
 .glass-header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid #e2e8f0;
 }
 
 .premium-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 0.875rem;
+  border-radius: 1rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .premium-card:hover {
   border-color: #cbd5e1;
-  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
 .interactive-card {
@@ -47,7 +59,7 @@
 
 .interactive-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
   border-color: #93c5fd;
 }
 
@@ -55,20 +67,21 @@
 .btn-primary {
   background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
   transition: all 0.15s ease;
 }
 
 .btn-primary:hover {
   background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%);
-  box-shadow: 0 4px 8px 0 rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 10px 0 rgba(37, 99, 235, 0.4);
   transform: translateY(-1px);
 }
 
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* Subtle Table Rows */

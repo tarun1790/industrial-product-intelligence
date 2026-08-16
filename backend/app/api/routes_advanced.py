@@ -82,12 +82,22 @@ async def get_interchange_equivalents(part_number: str):
 
 @router.post("/why-not", response_model=WhyNotEvaluation)
 async def evaluate_why_not(payload: Dict[str, Any]):
-    base_id = payload.get("base_product_id", "prod_abb_m3bp_160")
+    base_id = payload.get("base_product_id") or payload.get("base_part_number") or "prod_abb_m3bp_160"
     candidate_part = payload.get("candidate_part_number", "132S 5.5KW")
     candidate_mfg = payload.get("candidate_manufacturer", "Alternative OEM")
     
-    base_prod = CATALOG.get(base_id, list(CATALOG.values())[0])
-    return WhyNotEngine.evaluate_alternative(base_prod.dict(), candidate_part, candidate_mfg)
+    base_prod = CATALOG.get(base_id)
+    if not base_prod:
+        # Search by part number
+        for p in CATALOG.values():
+            if p.part_number.upper() == str(base_id).upper() or str(base_id).upper() in p.part_number.upper():
+                base_prod = p
+                break
+    if not base_prod and CATALOG:
+        base_prod = list(CATALOG.values())[0]
+
+    base_dict = base_prod.dict() if base_prod else {}
+    return WhyNotEngine.evaluate_alternative(base_dict, candidate_part, candidate_mfg)
 
 @router.get("/catalog-health", response_model=CatalogHealthMetrics)
 async def get_catalog_health_metrics():
