@@ -1,10 +1,11 @@
 const API_BASE = 'http://localhost:8080/api/v1';
 
-export async function fetchProducts(category, manufacturer) {
+export async function fetchProducts(category, manufacturer, industry) {
   try {
     const params = new URLSearchParams();
-    if (category) params.append('category', category);
-    if (manufacturer) params.append('manufacturer', manufacturer);
+    if (category && category !== 'All') params.append('category', category);
+    if (manufacturer && manufacturer !== 'All') params.append('manufacturer', manufacturer);
+    if (industry && industry !== 'All Industries') params.append('industry', industry);
     const res = await fetch(`${API_BASE}/products?${params.toString()}`);
     if (!res.ok) throw new Error('Failed to fetch products');
     return await res.json();
@@ -62,5 +63,56 @@ export async function compareProducts(productIds) {
     body: JSON.stringify({ product_ids: productIds })
   });
   if (!res.ok) throw new Error('Compare failed');
+  return await res.json();
+}
+
+export async function fetchInterchange(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/interchange/${encodeURIComponent(partNumber)}`);
+    if (!res.ok) throw new Error('Interchange failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Interchange API Error:', err);
+    return { matches: [] };
+  }
+}
+
+export async function fetchMotorCurves(payload) {
+  const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Curves API failed');
+  return await res.json();
+}
+
+export async function calculateBearingLife(payload) {
+  const res = await fetch(`${API_BASE}/advanced/curves/bearing-life`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Bearing life API failed');
+  return await res.json();
+}
+
+export async function fetchPumpQh(payload) {
+  const res = await fetch(`${API_BASE}/advanced/curves/pump-qh`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Pump QH API failed');
+  return await res.json();
+}
+
+export async function validateCompliance(payload) {
+  const res = await fetch(`${API_BASE}/advanced/compliance/check`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Compliance API failed');
   return await res.json();
 }

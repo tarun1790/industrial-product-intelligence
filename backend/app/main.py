@@ -6,6 +6,7 @@ from app.api.routes_products import router as products_router
 from app.api.routes_search import router as search_router
 from app.api.routes_graph import router as graph_router
 from app.api.routes_validation import router as validation_router
+from app.api.routes_advanced import router as advanced_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -27,6 +28,7 @@ app.include_router(products_router, prefix=settings.API_V1_STR)
 app.include_router(search_router, prefix=settings.API_V1_STR)
 app.include_router(graph_router, prefix=settings.API_V1_STR)
 app.include_router(validation_router, prefix=settings.API_V1_STR)
+app.include_router(advanced_router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 async def root():

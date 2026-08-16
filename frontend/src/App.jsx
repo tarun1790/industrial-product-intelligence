@@ -4,6 +4,9 @@ import IngestionStudio from './components/IngestionStudio';
 import EvidenceViewer from './components/EvidenceViewer';
 import ConflictResolver from './components/ConflictResolver';
 import ValidationReport from './components/ValidationReport';
+import InterchangeEngine from './components/InterchangeEngine';
+import EngineeringCurves from './components/EngineeringCurves';
+import ComplianceMatrix from './components/ComplianceMatrix';
 import KnowledgeGraphView from './components/KnowledgeGraphView';
 import CommerceExporter from './components/CommerceExporter';
 import ParametricSearch from './components/ParametricSearch';
@@ -36,7 +39,7 @@ export default function App() {
       const prods = await fetchProducts();
       setCatalog(prods);
       if (prods.length > 0) {
-        setSelectedProduct(prods[0]); // Default to first (ABB M3BP motor with resolved conflict)
+        setSelectedProduct(prods[0]); // Default to first
       }
       setIndustriesMeta({ total_catalog_size: prods.length });
     } catch (err) {
@@ -89,6 +92,18 @@ export default function App() {
           <ValidationReport product={selectedProduct} />
         )}
 
+        {activeTab === 'interchange' && (
+          <InterchangeEngine product={selectedProduct} onSelectProduct={handleSelectProduct} />
+        )}
+
+        {activeTab === 'curves' && (
+          <EngineeringCurves product={selectedProduct} />
+        )}
+
+        {activeTab === 'compliance' && (
+          <ComplianceMatrix product={selectedProduct} />
+        )}
+
         {activeTab === 'graph' && (
           <KnowledgeGraphView onSelectProduct={handleSelectProduct} />
         )}
@@ -107,9 +122,9 @@ export default function App() {
       </main>
 
       {/* Industrial Telemetry Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-3.5 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
+      <footer className="border-t border-slate-900 bg-slate-950 py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
         <div>
-          ProductIQ Industrial Product Intelligence Engine • Extract → Enrich → Validate → Prove
+          ProductIQ Industrial Product Intelligence Platform • Extract → Enrich → Validate → Prove
         </div>
         <div className="flex items-center gap-4 mt-2 sm:mt-0">
           <span>IEC 60034 / ISO 15 / ISO 5199 Compliant</span>
