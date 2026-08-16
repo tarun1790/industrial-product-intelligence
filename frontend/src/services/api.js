@@ -35,6 +35,16 @@ export async function ingestText(text) {
   return await res.json();
 }
 
+export async function uploadDatasheetDocument(filename, contentText) {
+  const res = await fetch(`${API_BASE}/ingest/upload-datasheet`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ filename, content_text: contentText })
+  });
+  if (!res.ok) throw new Error('Document upload failed');
+  return await res.json();
+}
+
 export async function fetchKnowledgeGraph() {
   try {
     const res = await fetch(`${API_BASE}/graph`);
@@ -246,6 +256,30 @@ export async function fetchVisionOcrData(partNumber) {
     console.error('Vision OCR API error:', err);
     return null;
   }
+}
+
+export async function dispatchEnterpriseWebhook(payload) {
+  const res = await fetch(`${API_BASE}/advanced/integrations/dispatch`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('Webhook dispatch failed');
+  return await res.json();
+}
+
+export async function fetchIoTTelemetry(partNumber, ambientTemp, loadFactor) {
+  const res = await fetch(`${API_BASE}/advanced/iot/telemetry`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      part_number: partNumber || 'M3BP 160MLA 4',
+      ambient_temp_c: ambientTemp || 40.0,
+      load_factor_percent: loadFactor || 85.0
+    })
+  });
+  if (!res.ok) throw new Error('IoT telemetry failed');
+  return await res.json();
 }
 
 export async function fetchMotorCurves(payload) {

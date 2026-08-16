@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -29,6 +29,8 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'industry_adapters', label: 'Multi-Industry', icon: Factory, badge: '10 Sectors' },
     { id: 'system_assembly', label: 'Assembly Twin', icon: Network, badge: 'BOM' },
     { id: 'rfq', label: 'AI RFQ Synthesizer', icon: ShoppingCart, badge: 'Instant BOM' },
+    { id: 'iot_twin', label: 'IoT Sensor Twin', icon: Radio, badge: 'MQTT Live' },
+    { id: 'enterprise_sync', label: 'ERP / PIM Sync', icon: Server, badge: 'SAP/Akeneo' },
     { id: 'dpp', label: 'Digital Passport', icon: Leaf },
     { id: 'weibull', label: 'Reliability Curve', icon: Activity },
     { id: 'interchange', label: 'Cross-Reference', icon: ArrowLeftRight },
@@ -49,7 +51,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
             </span>
-            ProductIQ Universal Decision Engine
+            ProductIQ Enterprise Decision Platform
           </span>
           <span className="hidden md:inline text-slate-300">|</span>
           <span className="hidden md:inline text-slate-600 font-mono text-[11px]">
@@ -59,7 +61,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
 
         <div className="flex items-center gap-2">
           <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-semibold text-[11px] shadow-2xs font-mono">
-            CUDA READY
+            CUDA ACCELERATED
           </span>
           <span className="px-2.5 py-0.5 rounded-md bg-blue-50 border border-blue-200 text-blue-700 font-bold text-[11px] shadow-2xs">
             100% SOUNDNESS
@@ -81,7 +83,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Product<span className="text-blue-600">IQ</span></span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 tracking-wide uppercase">
-                  Enterprise
+                  Enterprise 100/100
                 </span>
               </div>
             </div>

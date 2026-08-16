@@ -1,40 +1,30 @@
-from fastapi import APIRouter, UploadFile, File, Form, HTTPException
-from typing import Optional, Dict, Any, List
-from app.models.schemas import IngestionRequest, Product, ConflictRecord
+from fastapi import APIRouter, HTTPException
+from typing import Dict, Any
+from app.models.schemas import IngestionRequest, Product
 from app.engine.extractor import MultiModalExtractor
-from app.engine.conflict_resolver import ConflictResolutionEngine
+from app.engine.pdf_parser import LivePDFParserEngine
+from app.api.routes_products import CATALOG
 
-router = APIRouter(prefix="/ingest", tags=["Ingestion"])
+router = APIRouter(prefix="/ingest", tags=["Ingestion & Extraction"])
 
 @router.post("/part-number", response_model=Product)
-async def ingest_part_number(req: IngestionRequest):
-    if not req.content:
-        raise HTTPException(status_code=400, detail="Part number or description is required.")
-    product = MultiModalExtractor.extract_from_part_number(req.content)
-    return product
-
-@router.post("/pdf", response_model=Product)
-async def ingest_pdf(
-    file: UploadFile = File(...),
-    category_hint: Optional[str] = Form(None),
-    manufacturer_hint: Optional[str] = Form(None)
-):
-    if not file.filename.lower().endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="Uploaded file must be a PDF document.")
-    contents = await file.read()
-    product = MultiModalExtractor.extract_from_pdf(contents, file.filename)
-    return product
+async def ingest_part_number(payload: IngestionRequest):
+    content = payload.content or "M3BP 160MLA 4"
+    prod = MultiModalExtractor.extract_from_part_number(content, payload.manufacturer_hint)
+    CATALOG[prod.id] = prod
+    return prod
 
 @router.post("/text", response_model=Product)
-async def ingest_text(req: IngestionRequest):
-    if not req.content:
-        raise HTTPException(status_code=400, detail="Text content is required.")
-    product = MultiModalExtractor.extract_from_text(req.content)
-    return product
+async def ingest_raw_text(payload: IngestionRequest):
+    content = payload.content or ""
+    prod = MultiModalExtractor.extract_from_text(content, payload.category_hint)
+    CATALOG[prod.id] = prod
+    return prod
 
-@router.post("/resolve-conflict", response_model=ConflictRecord)
-async def resolve_conflict_endpoint(payload: Dict[str, Any]):
-    attr_name = payload.get("attribute_name", "weight")
-    sources = payload.get("sources", [])
-    category = payload.get("category", "Industrial Motor")
-    return ConflictResolutionEngine.resolve_attribute_conflict(attr_name, sources, category)
+@router.post("/upload-datasheet", response_model=Product)
+async def upload_datasheet_document(payload: Dict[str, str]):
+    filename = payload.get("filename", "custom_oem_datasheet.pdf")
+    content = payload.get("content_text", "")
+    prod = LivePDFParserEngine.parse_uploaded_datasheet(filename, content)
+    CATALOG[prod.id] = prod
+    return prod

@@ -17,6 +17,8 @@ from app.engine.industry_adapter import IndustryAdapterEngine, IndustryProfile
 from app.engine.system_assembly_simulator import SystemAssemblySimulatorEngine, SystemAssemblyRequest, SystemAssemblyReport
 from app.engine.rfq_generator import AutonomousRFQEngine, RFQResponse
 from app.engine.vision_ocr import VisionOCREngine, VisionDocumentReport
+from app.engine.enterprise_integrations import EnterpriseIntegrationEngine, WebhookDispatchPayload, WebhookDispatchResult
+from app.engine.iot_telemetry import IoTTelemetryTwinEngine, SensorTelemetryPacket
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -25,6 +27,17 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.post("/integrations/dispatch", response_model=WebhookDispatchResult)
+async def dispatch_enterprise_webhook(payload: WebhookDispatchPayload):
+    return EnterpriseIntegrationEngine.dispatch_to_enterprise_system(payload)
+
+@router.post("/iot/telemetry", response_model=SensorTelemetryPacket)
+async def get_live_iot_telemetry(payload: Dict[str, Any]):
+    part = payload.get("part_number", "M3BP 160MLA 4")
+    ambient = float(payload.get("ambient_temp_c", 40.0))
+    load = float(payload.get("load_factor_percent", 85.0))
+    return IoTTelemetryTwinEngine.get_live_machine_telemetry(part, ambient, load)
 
 @router.post("/rfq/generate", response_model=RFQResponse)
 async def generate_autonomous_rfq(payload: Dict[str, str]):
