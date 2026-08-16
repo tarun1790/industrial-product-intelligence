@@ -1,8 +1,13 @@
 from fastapi import APIRouter, HTTPException
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from app.engine.cross_reference import CrossReferenceEngine
 from app.engine.curves_simulator import EngineeringCurvesSimulator
 from app.engine.compliance import ComplianceEngine
+from app.engine.why_not_engine import WhyNotEngine
+from app.engine.catalog_health import CatalogHealthEngine
+from app.engine.temporal_history import TemporalHistoryEngine
+from app.models.schemas import WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem, ProductRevisionHistoryItem
+from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
 
@@ -14,6 +19,35 @@ async def get_interchange_equivalents(part_number: str):
         "equivalents_found": len(matches),
         "matches": matches
     }
+
+@router.post("/why-not", response_model=WhyNotEvaluation)
+async def evaluate_why_not(payload: Dict[str, Any]):
+    base_id = payload.get("base_product_id", "prod_abb_m3bp_160")
+    candidate_part = payload.get("candidate_part_number", "132S 5.5KW")
+    candidate_mfg = payload.get("candidate_manufacturer", "Alternative OEM")
+    
+    base_prod = CATALOG.get(base_id, list(CATALOG.values())[0])
+    return WhyNotEngine.evaluate_alternative(base_prod.dict(), candidate_part, candidate_mfg)
+
+@router.get("/catalog-health", response_model=CatalogHealthMetrics)
+async def get_catalog_health_metrics():
+    return CatalogHealthEngine.get_catalog_metrics()
+
+@router.get("/hitl/queue", response_model=List[HITLReviewItem])
+async def get_hitl_review_queue():
+    return CatalogHealthEngine.get_hitl_queue()
+
+@router.post("/hitl/update", response_model=HITLReviewItem)
+async def update_hitl_review(payload: Dict[str, Any]):
+    item_id = payload.get("item_id")
+    action = payload.get("action", "APPROVE")
+    override_val = payload.get("override_value")
+    reason = payload.get("reason", "Approved by Lead Plant Engineer")
+    return CatalogHealthEngine.update_hitl_item(item_id, action, override_val, reason)
+
+@router.get("/history/{part_number}", response_model=List[ProductRevisionHistoryItem])
+async def get_product_revision_history(part_number: str):
+    return TemporalHistoryEngine.get_revision_history(part_number)
 
 @router.post("/curves/motor")
 async def generate_motor_curves(payload: Dict[str, Any]):

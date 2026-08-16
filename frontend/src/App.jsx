@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import IngestionStudio from './components/IngestionStudio';
+import AttributeTruthTable from './components/AttributeTruthTable';
 import EvidenceViewer from './components/EvidenceViewer';
 import ConflictResolver from './components/ConflictResolver';
 import ValidationReport from './components/ValidationReport';
+import WhyNotEngine from './components/WhyNotEngine';
+import TemporalTimeline from './components/TemporalTimeline';
 import InterchangeEngine from './components/InterchangeEngine';
+import CatalogHealthDashboard from './components/CatalogHealthDashboard';
 import EngineeringCurves from './components/EngineeringCurves';
 import ComplianceMatrix from './components/ComplianceMatrix';
 import KnowledgeGraphView from './components/KnowledgeGraphView';
@@ -39,7 +43,7 @@ export default function App() {
       const prods = await fetchProducts();
       setCatalog(prods);
       if (prods.length > 0) {
-        setSelectedProduct(prods[0]); // Default to first
+        setSelectedProduct(prods[0]); // Default to first (ABB M3BP)
       }
       setIndustriesMeta({ total_catalog_size: prods.length });
     } catch (err) {
@@ -80,6 +84,10 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'truth_table' && (
+          <AttributeTruthTable product={selectedProduct} />
+        )}
+
         {activeTab === 'evidence' && (
           <EvidenceViewer product={selectedProduct} />
         )}
@@ -92,8 +100,20 @@ export default function App() {
           <ValidationReport product={selectedProduct} />
         )}
 
+        {activeTab === 'why_not' && (
+          <WhyNotEngine product={selectedProduct} />
+        )}
+
+        {activeTab === 'history' && (
+          <TemporalTimeline product={selectedProduct} />
+        )}
+
         {activeTab === 'interchange' && (
           <InterchangeEngine product={selectedProduct} onSelectProduct={handleSelectProduct} />
+        )}
+
+        {activeTab === 'catalog_health' && (
+          <CatalogHealthDashboard />
         )}
 
         {activeTab === 'curves' && (
@@ -124,7 +144,7 @@ export default function App() {
       {/* Industrial Telemetry Footer */}
       <footer className="border-t border-slate-900 bg-slate-950 py-3 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
         <div>
-          ProductIQ Industrial Product Intelligence Platform • Extract → Enrich → Validate → Prove
+          ProductIQ Industrial Product Intelligence Engine • Extract → Enrich → Validate → Prove
         </div>
         <div className="flex items-center gap-4 mt-2 sm:mt-0">
           <span>IEC 60034 / ISO 15 / ISO 5199 Compliant</span>

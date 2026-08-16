@@ -77,6 +77,59 @@ export async function fetchInterchange(partNumber) {
   }
 }
 
+export async function evaluateWhyNot(payload) {
+  const res = await fetch(`${API_BASE}/advanced/why-not`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('WhyNot API failed');
+  return await res.json();
+}
+
+export async function fetchCatalogHealth() {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/catalog-health`);
+    if (!res.ok) throw new Error('Catalog health failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Catalog health error:', err);
+    return null;
+  }
+}
+
+export async function fetchHitlQueue() {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/hitl/queue`);
+    if (!res.ok) throw new Error('HITL queue failed');
+    return await res.json();
+  } catch (err) {
+    console.error('HITL error:', err);
+    return [];
+  }
+}
+
+export async function updateHitlItem(payload) {
+  const res = await fetch(`${API_BASE}/advanced/hitl/update`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('HITL update failed');
+  return await res.json();
+}
+
+export async function fetchProductHistory(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/history/${encodeURIComponent(partNumber)}`);
+    if (!res.ok) throw new Error('History API failed');
+    return await res.json();
+  } catch (err) {
+    console.error('History API error:', err);
+    return [];
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

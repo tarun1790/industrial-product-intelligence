@@ -9,6 +9,9 @@ from app.core.normalizer import IndustrialNormalizer
 from app.engine.validator import EngineeringValidator
 from app.engine.commerce_generator import CommerceGenerator
 from app.engine.conflict_resolver import ConflictResolutionEngine
+from app.engine.identity_fingerprint import ProductIdentityEngine
+from app.engine.evidence_quality import EvidenceQualityEngine
+from app.engine.temporal_history import TemporalHistoryEngine
 
 class MultiModalExtractor:
     @classmethod
@@ -165,6 +168,10 @@ class MultiModalExtractor:
             attributes=norm_attrs
         )
 
+        fingerprint = ProductIdentityEngine.generate_fingerprint("M3BP 160MLA 4", "ABB", "Industrial Motor")
+        truth_table = EvidenceQualityEngine.generate_truth_table(norm_attrs, evidence, [conflict], checks)
+        history = TemporalHistoryEngine.get_revision_history("M3BP 160MLA 4")
+
         return Product(
             id="prod_abb_m3bp_160",
             part_number="M3BP 160MLA 4",
@@ -172,11 +179,15 @@ class MultiModalExtractor:
             manufacturer="ABB",
             product_family="M3BP Process Performance",
             category="Industrial Motor",
+            industry="Power Transmission & Heavy Machinery",
             series="M3BP Severe Duty",
             title="ABB 7.5 kW IE3 Process Performance Motor (M3BP 160MLA 4)",
             status="VERIFIED",
             trust_score=trust_score,
+            fingerprint=fingerprint,
             attributes=norm_attrs,
+            truth_table=truth_table,
+            revision_history=history,
             missing_attributes=[],
             enriched_attributes=["power_factor", "efficiency_percentage", "ambient_temp_max"],
             evidence_trail=evidence,
@@ -252,6 +263,10 @@ class MultiModalExtractor:
             attributes=norm_attrs
         )
 
+        fingerprint = ProductIdentityEngine.generate_fingerprint("6205-2RSH", "SKF", "Rolling Bearing")
+        truth_table = EvidenceQualityEngine.generate_truth_table(norm_attrs, evidence, [], checks)
+        history = TemporalHistoryEngine.get_revision_history("6205-2RSH")
+
         return Product(
             id="prod_skf_6205",
             part_number="6205-2RSH",
@@ -259,11 +274,15 @@ class MultiModalExtractor:
             manufacturer="SKF",
             product_family="Explorer Deep Groove Ball Bearings",
             category="Rolling Bearing",
+            industry="Precision Motion & Tribology",
             series="6200 Series",
             title="SKF 6205-2RSH Deep Groove Ball Bearing (25x52x15 mm)",
             status="VERIFIED",
             trust_score=trust_score,
+            fingerprint=fingerprint,
             attributes=norm_attrs,
+            truth_table=truth_table,
+            revision_history=history,
             missing_attributes=[],
             enriched_attributes=["limiting_speed_rpm", "cage_material"],
             evidence_trail=evidence,
