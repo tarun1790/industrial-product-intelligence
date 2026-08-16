@@ -15,6 +15,8 @@ from app.engine.reliability_weibull import WeibullReliabilityEngine
 from app.engine.multi_agent_consensus import MultiAgentConsensusProtocol
 from app.engine.industry_adapter import IndustryAdapterEngine, IndustryProfile
 from app.engine.system_assembly_simulator import SystemAssemblySimulatorEngine, SystemAssemblyRequest, SystemAssemblyReport
+from app.engine.rfq_generator import AutonomousRFQEngine, RFQResponse
+from app.engine.vision_ocr import VisionOCREngine, VisionDocumentReport
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -23,6 +25,15 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.post("/rfq/generate", response_model=RFQResponse)
+async def generate_autonomous_rfq(payload: Dict[str, str]):
+    prompt = payload.get("prompt", "Corrosive chemical acid transfer skid with ATEX Zone 1 compliance")
+    return AutonomousRFQEngine.generate_rfq_from_natural_language(prompt)
+
+@router.get("/vision/inspect", response_model=VisionDocumentReport)
+async def inspect_vision_datasheet(part_number: str = "M3BP 160MLA 4"):
+    return VisionOCREngine.inspect_datasheet_vision(part_number)
 
 @router.post("/system-assembly", response_model=SystemAssemblyReport)
 async def simulate_system_assembly(payload: SystemAssemblyRequest):

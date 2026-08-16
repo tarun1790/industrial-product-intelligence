@@ -227,6 +227,27 @@ export async function simulateSystemAssembly(payload) {
   return await res.json();
 }
 
+export async function generateAutonomousRfq(prompt) {
+  const res = await fetch(`${API_BASE}/advanced/rfq/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt })
+  });
+  if (!res.ok) throw new Error('RFQ generation failed');
+  return await res.json();
+}
+
+export async function fetchVisionOcrData(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/vision/inspect?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('Vision OCR failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Vision OCR API error:', err);
+    return null;
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

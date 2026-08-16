@@ -13,6 +13,8 @@ import WeibullReliabilityView from './components/WeibullReliabilityView';
 import MultiAgentConsensusView from './components/MultiAgentConsensusView';
 import IndustryAdaptationView from './components/IndustryAdaptationView';
 import SystemAssemblySimulator from './components/SystemAssemblySimulator';
+import AutonomousRfqView from './components/AutonomousRfqView';
+import VisionOcrStudio from './components/VisionOcrStudio';
 import WhyNotEngine from './components/WhyNotEngine';
 import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
@@ -102,6 +104,10 @@ export default function App() {
           <SourceDiscoveryView product={selectedProduct} />
         )}
 
+        {activeTab === 'vision_ocr' && (
+          <VisionOcrStudio selectedProduct={selectedProduct} />
+        )}
+
         {/* PILLAR 2: ENRICH */}
         {activeTab === 'ontology' && (
           <ProductOntologyView product={selectedProduct} />
@@ -156,6 +162,10 @@ export default function App() {
 
         {activeTab === 'system_assembly' && (
           <SystemAssemblySimulator />
+        )}
+
+        {activeTab === 'rfq' && (
+          <AutonomousRfqView />
         )}
 
         {activeTab === 'dpp' && (

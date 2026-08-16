@@ -1,11 +1,12 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
     // PILLAR 1: IDENTIFY
     { id: 'ingest', label: '1. Ingestion', icon: Layers, badge: 'Extract' },
     { id: 'sources', label: '2. Sources', icon: Globe, badge: 'Discovery' },
+    { id: 'vision_ocr', label: 'Vision OCR', icon: ScanLine, badge: 'Bounding Box' },
     
     // PILLAR 2: ENRICH
     { id: 'ontology', label: '3. Ontology', icon: Layers, badge: 'Schema' },
@@ -27,6 +28,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     // Universal Cross-Industry Extensions
     { id: 'industry_adapters', label: 'Multi-Industry', icon: Factory, badge: '10 Sectors' },
     { id: 'system_assembly', label: 'Assembly Twin', icon: Network, badge: 'BOM' },
+    { id: 'rfq', label: 'AI RFQ Synthesizer', icon: ShoppingCart, badge: 'Instant BOM' },
     { id: 'dpp', label: 'Digital Passport', icon: Leaf },
     { id: 'weibull', label: 'Reliability Curve', icon: Activity },
     { id: 'interchange', label: 'Cross-Reference', icon: ArrowLeftRight },
@@ -51,13 +53,13 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
           </span>
           <span className="hidden md:inline text-slate-300">|</span>
           <span className="hidden md:inline text-slate-600 font-mono text-[11px]">
-            10 SECTORS: POWER • MOTION • HYDRAULICS • SWITCHGEAR • AUTOMATION • SENSING • PHARMA • PETROCHEM • AEROSPACE • CRYOGENICS
+            IDENTIFY → ENRICH → VALIDATE → PROVE
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-semibold text-[11px] shadow-2xs font-mono">
-            CUDA GPU
+            CUDA READY
           </span>
           <span className="px-2.5 py-0.5 rounded-md bg-blue-50 border border-blue-200 text-blue-700 font-bold text-[11px] shadow-2xs">
             100% SOUNDNESS
@@ -68,7 +70,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
       {/* Main Header Container */}
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
-          {/* Logo with Mechanical Wrench Tool in Electric Blue */}
+          {/* Logo */}
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-sm shadow-blue-500/25 ring-1 ring-blue-500/20">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -79,7 +81,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Product<span className="text-blue-600">IQ</span></span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 tracking-wide uppercase">
-                  Multi-Industry
+                  Enterprise
                 </span>
               </div>
             </div>
