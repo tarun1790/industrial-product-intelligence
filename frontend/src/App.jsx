@@ -3,10 +3,13 @@ import Navbar from './components/Navbar';
 import IngestionStudio from './components/IngestionStudio';
 import SourceDiscoveryView from './components/SourceDiscoveryView';
 import ProductOntologyView from './components/ProductOntologyView';
+import SelfHealingOntologyView from './components/SelfHealingOntologyView';
 import AttributeTruthTable from './components/AttributeTruthTable';
 import ProvenanceInspector from './components/ProvenanceInspector';
 import ConflictResolver from './components/ConflictResolver';
 import ValidationReport from './components/ValidationReport';
+import ThermalFEMSurrogateView from './components/ThermalFEMSurrogateView';
+import ChemicalCorrosionView from './components/ChemicalCorrosionView';
 import NeuroSymbolicView from './components/NeuroSymbolicView';
 import DigitalProductPassportView from './components/DigitalProductPassportView';
 import WeibullReliabilityView from './components/WeibullReliabilityView';
@@ -21,6 +24,7 @@ import CADDimensionView from './components/CADDimensionView';
 import GraphReasoningView from './components/GraphReasoningView';
 import RegulatoryAuditorView from './components/RegulatoryAuditorView';
 import BayesianUncertaintyView from './components/BayesianUncertaintyView';
+import TCOOptimizerView from './components/TCOOptimizerView';
 import WhyNotEngine from './components/WhyNotEngine';
 import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
@@ -119,6 +123,10 @@ export default function App() {
           <ProductOntologyView product={selectedProduct} />
         )}
 
+        {activeTab === 'self_healing' && (
+          <SelfHealingOntologyView />
+        )}
+
         {activeTab === 'truth_table' && (
           <AttributeTruthTable product={selectedProduct} />
         )}
@@ -130,6 +138,14 @@ export default function App() {
         {/* PILLAR 3: VALIDATE */}
         {activeTab === 'validation' && (
           <ValidationReport product={selectedProduct} />
+        )}
+
+        {activeTab === 'thermal_fem' && (
+          <ThermalFEMSurrogateView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'chemical_matrix' && (
+          <ChemicalCorrosionView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'neuro_symbolic' && (
@@ -167,6 +183,10 @@ export default function App() {
 
         {activeTab === 'compliance_audit' && (
           <RegulatoryAuditorView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'tco_optimizer' && (
+          <TCOOptimizerView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'history' && (
@@ -244,7 +264,7 @@ export default function App() {
           <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> TransE Graph AI & CAD Vectorizer Active
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Thermal FEM & Self-Healing Schemas Active
           </span>
         </div>
       </footer>

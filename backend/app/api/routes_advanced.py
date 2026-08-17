@@ -23,6 +23,10 @@ from app.engine.cad_dimension_extractor import CADDimensionEngine, CADBlueprintR
 from app.engine.graph_reasoning import KnowledgeGraphReasoningEngine, KnowledgeGraphReasoningReport
 from app.engine.compliance_auditor import RegulatoryAuditorEngine, ComplianceAuditCertificate
 from app.engine.bayesian_fusion import BayesianFusionEngine, BayesianFusionReport
+from app.engine.self_healing_ontology import SelfHealingOntologyEngine, SelfHealingOntologyReport
+from app.engine.thermal_fem_surrogate import ThermalFEMSurrogateEngine, ThermalFEMReport
+from app.engine.chemical_corrosion_matrix import ChemicalCorrosionEngine, ChemicalCompatibilityReport
+from app.engine.tco_carbon_optimizer import TCOCarbonOptimizerEngine, TCOComparisonResult
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -31,6 +35,35 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/ontology/self-healing", response_model=SelfHealingOntologyReport)
+async def get_self_healing_ontology_report():
+    return SelfHealingOntologyEngine.audit_and_repair_schemas()
+
+@router.post("/physics/thermal-fem", response_model=ThermalFEMReport)
+async def simulate_thermal_fem(payload: Dict[str, Any]):
+    part = payload.get("part_number", "M3BP 160MLA 4")
+    ambient = float(payload.get("ambient_temp_c", 40.0))
+    load = float(payload.get("load_factor_pct", 85.0))
+    return ThermalFEMSurrogateEngine.simulate_thermal_distribution(part, ambient, load)
+
+@router.post("/chemical/corrosion", response_model=ChemicalCompatibilityReport)
+async def evaluate_chemical_corrosion(payload: Dict[str, str]):
+    part = payload.get("part_number", "LKH-10/140")
+    material = payload.get("base_material", "AISI 316L Electropolished")
+    elastomer = payload.get("elastomer", "EPDM FDA")
+    return ChemicalCorrosionEngine.evaluate_chemical_compatibility(part, material, elastomer)
+
+@router.post("/finance/tco-carbon", response_model=TCOComparisonResult)
+async def calculate_tco_carbon_roi(payload: Dict[str, Any]):
+    part = payload.get("part_number", "M3BP 160MLA 4")
+    power = float(payload.get("rated_power_kw", 7.5))
+    hours = int(payload.get("annual_operating_hours", 6000))
+    tariff = float(payload.get("electricity_tariff_usd_kwh", 0.14))
+    base_eff = float(payload.get("baseline_efficiency_pct", 87.7))
+    opt_eff = float(payload.get("optimized_efficiency_pct", 90.4))
+    capex = float(payload.get("initial_capex_premium_usd", 480.0))
+    return TCOCarbonOptimizerEngine.calculate_tco_and_carbon_roi(part, power, hours, tariff, base_eff, opt_eff, capex)
 
 @router.get("/cad/dimensions", response_model=CADBlueprintReport)
 async def get_cad_dimensions(part_number: str = "M3BP 160MLA 4"):

@@ -326,6 +326,55 @@ export async function fetchBayesianFusion(partNumber) {
   }
 }
 
+export async function fetchSelfHealingOntology() {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/ontology/self-healing`);
+    if (!res.ok) throw new Error('Self healing failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Self healing error:', err);
+    return null;
+  }
+}
+
+export async function simulateThermalFEM(partNumber, ambientTemp, loadFactor) {
+  const res = await fetch(`${API_BASE}/advanced/physics/thermal-fem`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      part_number: partNumber || 'M3BP 160MLA 4',
+      ambient_temp_c: ambientTemp || 40.0,
+      load_factor_pct: loadFactor || 85.0
+    })
+  });
+  if (!res.ok) throw new Error('Thermal FEM failed');
+  return await res.json();
+}
+
+export async function evaluateChemicalCorrosion(partNumber, baseMaterial, elastomer) {
+  const res = await fetch(`${API_BASE}/advanced/chemical/corrosion`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      part_number: partNumber || 'LKH-10/140',
+      base_material: baseMaterial || 'AISI 316L Electropolished',
+      elastomer: elastomer || 'EPDM FDA'
+    })
+  });
+  if (!res.ok) throw new Error('Chemical corrosion API failed');
+  return await res.json();
+}
+
+export async function calculateTCOCarbonROI(payload) {
+  const res = await fetch(`${API_BASE}/advanced/finance/tco-carbon`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('TCO Carbon API failed');
+  return await res.json();
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -10,11 +10,14 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     
     // PILLAR 2: ENRICH
     { id: 'ontology', label: '3. Ontology', icon: Layers, badge: 'Schema' },
+    { id: 'self_healing', label: 'Self-Healing Schema', icon: Wrench, badge: 'Auto-Repair' },
     { id: 'truth_table', label: '4. Truth Table', icon: Table, badge: 'EQA' },
     { id: 'cad', label: 'CAD 2D Blueprint', icon: Compass, badge: 'ISO Fit' },
 
     // PILLAR 3: VALIDATE
     { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
+    { id: 'thermal_fem', label: 'Thermal FEM', icon: Flame, badge: 'PINO 3D' },
+    { id: 'chemical_matrix', label: 'Chemical Matrix', icon: FlaskConical, badge: 'NACE MR0175' },
     { id: 'neuro_symbolic', label: '6. Neuro-Symbolic', icon: Cpu, badge: 'Logic' },
     { id: 'bayesian_fusion', label: 'Bayesian Uncertainty', icon: Target, badge: '95% CI' },
     { id: 'why_not', label: '7. "Why Not?"', icon: HelpCircle, badge: 'Rejection' },
@@ -26,6 +29,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'multi_agent', label: '11. Multi-Agent', icon: Users2, badge: 'Consensus' },
     { id: 'graph_reasoning', label: 'Graph Reasoning', icon: GitBranch, badge: 'TransE AI' },
     { id: 'compliance_audit', label: 'Statutory Auditor', icon: ShieldCheck, badge: 'CBAM/ATEX' },
+    { id: 'tco_optimizer', label: 'TCO & Carbon ROI', icon: DollarSign, badge: '10-Yr NPV' },
     { id: 'history', label: '12. History', icon: History, badge: 'Timeline' },
     { id: 'catalog_health', label: '13. Catalog & HITL', icon: BarChart3, badge: 'HITL' },
 
