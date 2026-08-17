@@ -19,6 +19,10 @@ from app.engine.rfq_generator import AutonomousRFQEngine, RFQResponse
 from app.engine.vision_ocr import VisionOCREngine, VisionDocumentReport
 from app.engine.enterprise_integrations import EnterpriseIntegrationEngine, WebhookDispatchPayload, WebhookDispatchResult
 from app.engine.iot_telemetry import IoTTelemetryTwinEngine, SensorTelemetryPacket
+from app.engine.cad_dimension_extractor import CADDimensionEngine, CADBlueprintReport
+from app.engine.graph_reasoning import KnowledgeGraphReasoningEngine, KnowledgeGraphReasoningReport
+from app.engine.compliance_auditor import RegulatoryAuditorEngine, ComplianceAuditCertificate
+from app.engine.bayesian_fusion import BayesianFusionEngine, BayesianFusionReport
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -27,6 +31,22 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/cad/dimensions", response_model=CADBlueprintReport)
+async def get_cad_dimensions(part_number: str = "M3BP 160MLA 4"):
+    return CADDimensionEngine.extract_cad_dimensions(part_number)
+
+@router.get("/graph/reasoning", response_model=KnowledgeGraphReasoningReport)
+async def get_graph_reasoning_report(part_number: str = "M3BP 160MLA 4"):
+    return KnowledgeGraphReasoningEngine.run_graph_reasoning(part_number)
+
+@router.get("/compliance/audit", response_model=ComplianceAuditCertificate)
+async def get_statutory_compliance_audit(part_number: str = "M3BP 160MLA 4", manufacturer: str = "ABB"):
+    return RegulatoryAuditorEngine.run_statutory_audit(part_number, manufacturer)
+
+@router.get("/bayesian/fusion", response_model=BayesianFusionReport)
+async def get_bayesian_fusion_report(part_number: str = "M3BP 160MLA 4"):
+    return BayesianFusionEngine.compute_bayesian_fusion(part_number)
 
 @router.post("/integrations/dispatch", response_model=WebhookDispatchResult)
 async def dispatch_enterprise_webhook(payload: WebhookDispatchPayload):

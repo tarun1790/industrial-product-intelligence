@@ -282,6 +282,50 @@ export async function fetchIoTTelemetry(partNumber, ambientTemp, loadFactor) {
   return await res.json();
 }
 
+export async function fetchCADDimensions(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/cad/dimensions?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('CAD API failed');
+    return await res.json();
+  } catch (err) {
+    console.error('CAD error:', err);
+    return null;
+  }
+}
+
+export async function fetchGraphReasoning(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/graph/reasoning?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('Graph reasoning failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Graph reasoning error:', err);
+    return null;
+  }
+}
+
+export async function fetchComplianceAudit(partNumber, manufacturer) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/compliance/audit?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}&manufacturer=${encodeURIComponent(manufacturer || 'ABB')}`);
+    if (!res.ok) throw new Error('Audit failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Audit error:', err);
+    return null;
+  }
+}
+
+export async function fetchBayesianFusion(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/bayesian/fusion?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('Bayesian fusion failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Bayesian error:', err);
+    return null;
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

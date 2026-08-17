@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -11,10 +11,12 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     // PILLAR 2: ENRICH
     { id: 'ontology', label: '3. Ontology', icon: Layers, badge: 'Schema' },
     { id: 'truth_table', label: '4. Truth Table', icon: Table, badge: 'EQA' },
+    { id: 'cad', label: 'CAD 2D Blueprint', icon: Compass, badge: 'ISO Fit' },
 
     // PILLAR 3: VALIDATE
     { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
     { id: 'neuro_symbolic', label: '6. Neuro-Symbolic', icon: Cpu, badge: 'Logic' },
+    { id: 'bayesian_fusion', label: 'Bayesian Uncertainty', icon: Target, badge: '95% CI' },
     { id: 'why_not', label: '7. "Why Not?"', icon: HelpCircle, badge: 'Rejection' },
     { id: 'benchmarks', label: '8. Benchmarks', icon: Award, badge: '98.7%' },
 
@@ -22,6 +24,8 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'provenance', label: '9. Provenance', icon: Eye, badge: 'Proof' },
     { id: 'conflicts', label: '10. Conflicts', icon: GitMerge, badge: '5-Step' },
     { id: 'multi_agent', label: '11. Multi-Agent', icon: Users2, badge: 'Consensus' },
+    { id: 'graph_reasoning', label: 'Graph Reasoning', icon: GitBranch, badge: 'TransE AI' },
+    { id: 'compliance_audit', label: 'Statutory Auditor', icon: ShieldCheck, badge: 'CBAM/ATEX' },
     { id: 'history', label: '12. History', icon: History, badge: 'Timeline' },
     { id: 'catalog_health', label: '13. Catalog & HITL', icon: BarChart3, badge: 'HITL' },
 
@@ -83,7 +87,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Product<span className="text-blue-600">IQ</span></span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 tracking-wide uppercase">
-                  Enterprise 100/100
+                  Enterprise Suite
                 </span>
               </div>
             </div>

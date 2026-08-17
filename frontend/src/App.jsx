@@ -17,6 +17,10 @@ import AutonomousRfqView from './components/AutonomousRfqView';
 import VisionOcrStudio from './components/VisionOcrStudio';
 import EnterpriseConnectorView from './components/EnterpriseConnectorView';
 import IoTTelemetryTwinView from './components/IoTTelemetryTwinView';
+import CADDimensionView from './components/CADDimensionView';
+import GraphReasoningView from './components/GraphReasoningView';
+import RegulatoryAuditorView from './components/RegulatoryAuditorView';
+import BayesianUncertaintyView from './components/BayesianUncertaintyView';
 import WhyNotEngine from './components/WhyNotEngine';
 import BenchmarkReport from './components/BenchmarkReport';
 import TemporalTimeline from './components/TemporalTimeline';
@@ -119,6 +123,10 @@ export default function App() {
           <AttributeTruthTable product={selectedProduct} />
         )}
 
+        {activeTab === 'cad' && (
+          <CADDimensionView selectedProduct={selectedProduct} />
+        )}
+
         {/* PILLAR 3: VALIDATE */}
         {activeTab === 'validation' && (
           <ValidationReport product={selectedProduct} />
@@ -126,6 +134,10 @@ export default function App() {
 
         {activeTab === 'neuro_symbolic' && (
           <NeuroSymbolicView product={selectedProduct} />
+        )}
+
+        {activeTab === 'bayesian_fusion' && (
+          <BayesianUncertaintyView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'why_not' && (
@@ -147,6 +159,14 @@ export default function App() {
 
         {activeTab === 'multi_agent' && (
           <MultiAgentConsensusView product={selectedProduct} />
+        )}
+
+        {activeTab === 'graph_reasoning' && (
+          <GraphReasoningView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'compliance_audit' && (
+          <RegulatoryAuditorView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'history' && (
@@ -224,7 +244,7 @@ export default function App() {
           <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Live ERP/PIM Webhooks Active
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> TransE Graph AI & CAD Vectorizer Active
           </span>
         </div>
       </footer>
