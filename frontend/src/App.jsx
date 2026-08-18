@@ -12,6 +12,7 @@ import ThermalFEMSurrogateView from './components/ThermalFEMSurrogateView';
 import ChemicalCorrosionView from './components/ChemicalCorrosionView';
 import FFTVibrationView from './components/FFTVibrationView';
 import PLCCodeGeneratorView from './components/PLCCodeGeneratorView';
+import RealtimeStreamingStudio from './components/RealtimeStreamingStudio';
 import NegotiationWarRoomView from './components/NegotiationWarRoomView';
 import CircularDismantleView from './components/CircularDismantleView';
 import NeuroSymbolicView from './components/NeuroSymbolicView';
@@ -197,6 +198,10 @@ export default function App() {
           <PLCCodeGeneratorView selectedProduct={selectedProduct} />
         )}
 
+        {activeTab === 'realtime_studio' && (
+          <RealtimeStreamingStudio selectedProduct={selectedProduct} />
+        )}
+
         {activeTab === 'negotiation_warroom' && (
           <NegotiationWarRoomView selectedProduct={selectedProduct} />
         )}
@@ -284,7 +289,7 @@ export default function App() {
           <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> PLC Compiler & Sourcing War-Room Active
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 100 Hz WebSockets & SCADA Online
           </span>
         </div>
       </footer>

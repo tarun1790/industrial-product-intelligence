@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle, Wifi } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -31,6 +31,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'graph_reasoning', label: 'Graph Reasoning', icon: GitBranch, badge: 'TransE AI' },
     { id: 'compliance_audit', label: 'Statutory Auditor', icon: ShieldCheck, badge: 'CBAM/ATEX' },
     { id: 'plc_code', label: 'PLC Automation Code', icon: Terminal, badge: 'IEC 61131-3' },
+    { id: 'realtime_studio', label: '100 Hz Live Twin', icon: Wifi, badge: 'WebSocket' },
     { id: 'negotiation_warroom', label: 'Supplier War-Room', icon: ShoppingBag, badge: 'Nash Auction' },
     { id: 'circular_dismantle', label: 'Circular Dismantle', icon: Recycle, badge: '94% MCI' },
     { id: 'tco_optimizer', label: 'TCO & Carbon ROI', icon: DollarSign, badge: '10-Yr NPV' },
@@ -95,7 +96,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Product<span className="text-blue-600">IQ</span></span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 tracking-wide uppercase">
-                  Enterprise Suite
+                  Enterprise Production
                 </span>
               </div>
             </div>

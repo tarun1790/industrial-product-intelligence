@@ -418,6 +418,43 @@ export async function fetchCircularDismantle(partNumber) {
   }
 }
 
+export function getTelemetryWebSocketURL() {
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const host = window.location.hostname;
+  return `${protocol}//${host}:8080/api/v1/realtime/stream`;
+}
+
+export async function pollRealtimeTelemetry(partNumber) {
+  const res = await fetch(`${API_BASE}/realtime/poll?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+  if (!res.ok) throw new Error('Poll failed');
+  return await res.json();
+}
+
+export async function triggerEmergencyTrip(reason) {
+  const res = await fetch(`${API_BASE}/realtime/trip`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ reason: reason || 'MANUAL_E_STOP_TRIGGERED' })
+  });
+  if (!res.ok) throw new Error('Trip failed');
+  return await res.json();
+}
+
+export async function resetEmergencyTrip() {
+  const res = await fetch(`${API_BASE}/realtime/reset`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (!res.ok) throw new Error('Reset failed');
+  return await res.json();
+}
+
+export async function fetchProductionHealth() {
+  const res = await fetch('http://localhost:8080/health');
+  if (!res.ok) throw new Error('Health check failed');
+  return await res.json();
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',
