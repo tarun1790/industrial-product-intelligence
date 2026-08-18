@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -18,6 +18,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
     { id: 'thermal_fem', label: 'Thermal FEM', icon: Flame, badge: 'PINO 3D' },
     { id: 'chemical_matrix', label: 'Chemical Matrix', icon: FlaskConical, badge: 'NACE MR0175' },
+    { id: 'fft_vibration', label: 'FFT Vibration Twin', icon: Radio, badge: 'ISO 10816' },
     { id: 'neuro_symbolic', label: '6. Neuro-Symbolic', icon: Cpu, badge: 'Logic' },
     { id: 'bayesian_fusion', label: 'Bayesian Uncertainty', icon: Target, badge: '95% CI' },
     { id: 'why_not', label: '7. "Why Not?"', icon: HelpCircle, badge: 'Rejection' },
@@ -29,6 +30,9 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'multi_agent', label: '11. Multi-Agent', icon: Users2, badge: 'Consensus' },
     { id: 'graph_reasoning', label: 'Graph Reasoning', icon: GitBranch, badge: 'TransE AI' },
     { id: 'compliance_audit', label: 'Statutory Auditor', icon: ShieldCheck, badge: 'CBAM/ATEX' },
+    { id: 'plc_code', label: 'PLC Automation Code', icon: Terminal, badge: 'IEC 61131-3' },
+    { id: 'negotiation_warroom', label: 'Supplier War-Room', icon: ShoppingBag, badge: 'Nash Auction' },
+    { id: 'circular_dismantle', label: 'Circular Dismantle', icon: Recycle, badge: '94% MCI' },
     { id: 'tco_optimizer', label: 'TCO & Carbon ROI', icon: DollarSign, badge: '10-Yr NPV' },
     { id: 'history', label: '12. History', icon: History, badge: 'Timeline' },
     { id: 'catalog_health', label: '13. Catalog & HITL', icon: BarChart3, badge: 'HITL' },

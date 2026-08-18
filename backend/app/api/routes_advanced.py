@@ -27,6 +27,10 @@ from app.engine.self_healing_ontology import SelfHealingOntologyEngine, SelfHeal
 from app.engine.thermal_fem_surrogate import ThermalFEMSurrogateEngine, ThermalFEMReport
 from app.engine.chemical_corrosion_matrix import ChemicalCorrosionEngine, ChemicalCompatibilityReport
 from app.engine.tco_carbon_optimizer import TCOCarbonOptimizerEngine, TCOComparisonResult
+from app.engine.plc_code_generator import PLCCodeGeneratorEngine, PLCCodePackage
+from app.engine.fft_vibration_diagnostics import FFTVibrationDiagnosticsEngine, FFTSpectralReport
+from app.engine.supplier_negotiation_warroom import SupplierNegotiationWarRoomEngine, SupplierNegotiationWarRoomReport
+from app.engine.circular_dismantle_tree import CircularDismantleEngine, CircularDismantleReport
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -35,6 +39,25 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/automation/plc-code", response_model=PLCCodePackage)
+async def get_synthesized_plc_code(part_number: str = "M3BP 160MLA 4", target_brand: str = "Siemens S7-1500"):
+    return PLCCodeGeneratorEngine.synthesize_plc_code(part_number, target_brand)
+
+@router.get("/diagnostics/fft-vibration", response_model=FFTSpectralReport)
+async def get_fft_vibration_diagnostics(part_number: str = "M3BP 160MLA 4", running_rpm: float = 1465.0, bearing_model: str = "SKF 6309 C3"):
+    return FFTVibrationDiagnosticsEngine.compute_fft_spectral_diagnostics(part_number, running_rpm, bearing_model)
+
+@router.post("/procurement/war-room", response_model=SupplierNegotiationWarRoomReport)
+async def run_procurement_war_room(payload: Dict[str, Any]):
+    part = payload.get("part_number", "M3BP 160MLA 4")
+    qty = int(payload.get("quantity", 10))
+    msrp = float(payload.get("baseline_msrp", 2850.0))
+    return SupplierNegotiationWarRoomEngine.run_sourcing_war_room(part, qty, msrp)
+
+@router.get("/sustainability/dismantle-tree", response_model=CircularDismantleReport)
+async def get_circular_dismantle_tree(part_number: str = "M3BP 160MLA 4"):
+    return CircularDismantleEngine.generate_dismantle_tree(part_number)
 
 @router.get("/ontology/self-healing", response_model=SelfHealingOntologyReport)
 async def get_self_healing_ontology_report():

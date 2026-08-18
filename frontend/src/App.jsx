@@ -10,6 +10,10 @@ import ConflictResolver from './components/ConflictResolver';
 import ValidationReport from './components/ValidationReport';
 import ThermalFEMSurrogateView from './components/ThermalFEMSurrogateView';
 import ChemicalCorrosionView from './components/ChemicalCorrosionView';
+import FFTVibrationView from './components/FFTVibrationView';
+import PLCCodeGeneratorView from './components/PLCCodeGeneratorView';
+import NegotiationWarRoomView from './components/NegotiationWarRoomView';
+import CircularDismantleView from './components/CircularDismantleView';
 import NeuroSymbolicView from './components/NeuroSymbolicView';
 import DigitalProductPassportView from './components/DigitalProductPassportView';
 import WeibullReliabilityView from './components/WeibullReliabilityView';
@@ -148,6 +152,10 @@ export default function App() {
           <ChemicalCorrosionView selectedProduct={selectedProduct} />
         )}
 
+        {activeTab === 'fft_vibration' && (
+          <FFTVibrationView selectedProduct={selectedProduct} />
+        )}
+
         {activeTab === 'neuro_symbolic' && (
           <NeuroSymbolicView product={selectedProduct} />
         )}
@@ -183,6 +191,18 @@ export default function App() {
 
         {activeTab === 'compliance_audit' && (
           <RegulatoryAuditorView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'plc_code' && (
+          <PLCCodeGeneratorView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'negotiation_warroom' && (
+          <NegotiationWarRoomView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'circular_dismantle' && (
+          <CircularDismantleView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'tco_optimizer' && (
@@ -264,7 +284,7 @@ export default function App() {
           <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Thermal FEM & Self-Healing Schemas Active
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> PLC Compiler & Sourcing War-Room Active
           </span>
         </div>
       </footer>

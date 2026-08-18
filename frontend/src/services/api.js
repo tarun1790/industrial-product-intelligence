@@ -375,6 +375,49 @@ export async function calculateTCOCarbonROI(payload) {
   return await res.json();
 }
 
+export async function fetchPLCCode(partNumber, targetBrand) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/automation/plc-code?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}&target_brand=${encodeURIComponent(targetBrand || 'Siemens S7-1500')}`);
+    if (!res.ok) throw new Error('PLC API failed');
+    return await res.json();
+  } catch (err) {
+    console.error('PLC error:', err);
+    return null;
+  }
+}
+
+export async function fetchFFTVibration(partNumber, runningRpm, bearingModel) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/diagnostics/fft-vibration?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}&running_rpm=${runningRpm || 1465.0}&bearing_model=${encodeURIComponent(bearingModel || 'SKF 6309 C3')}`);
+    if (!res.ok) throw new Error('FFT API failed');
+    return await res.json();
+  } catch (err) {
+    console.error('FFT error:', err);
+    return null;
+  }
+}
+
+export async function runProcurementWarRoom(payload) {
+  const res = await fetch(`${API_BASE}/advanced/procurement/war-room`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('War room API failed');
+  return await res.json();
+}
+
+export async function fetchCircularDismantle(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/sustainability/dismantle-tree?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('Dismantle tree failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Dismantle tree error:', err);
+    return null;
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',
