@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle, Wifi } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle, Wifi, Box, Camera, Navigation } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -7,16 +7,19 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'ingest', label: '1. Ingestion', icon: Layers, badge: 'Extract' },
     { id: 'sources', label: '2. Sources', icon: Globe, badge: 'Discovery' },
     { id: 'vision_ocr', label: 'Vision OCR', icon: ScanLine, badge: 'Bounding Box' },
+    { id: 'vision_defect', label: 'Vision Defect Scanner', icon: Camera, badge: 'ViT AOI' },
     
     // PILLAR 2: ENRICH
     { id: 'ontology', label: '3. Ontology', icon: Layers, badge: 'Schema' },
     { id: 'self_healing', label: 'Self-Healing Schema', icon: Wrench, badge: 'Auto-Repair' },
     { id: 'truth_table', label: '4. Truth Table', icon: Table, badge: 'EQA' },
     { id: 'cad', label: 'CAD 2D Blueprint', icon: Compass, badge: 'ISO Fit' },
+    { id: 'threed_twin', label: '3D WebGL Twin', icon: Box, badge: '60 FPS' },
 
     // PILLAR 3: VALIDATE
     { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
     { id: 'thermal_fem', label: 'Thermal FEM', icon: Flame, badge: 'PINO 3D' },
+    { id: 'pirl_vfd', label: 'PIRL VFD Optimizer', icon: Cpu, badge: 'RL +7.8%' },
     { id: 'chemical_matrix', label: 'Chemical Matrix', icon: FlaskConical, badge: 'NACE MR0175' },
     { id: 'fft_vibration', label: 'FFT Vibration Twin', icon: Radio, badge: 'ISO 10816' },
     { id: 'neuro_symbolic', label: '6. Neuro-Symbolic', icon: Cpu, badge: 'Logic' },
@@ -29,6 +32,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'conflicts', label: '10. Conflicts', icon: GitMerge, badge: '5-Step' },
     { id: 'multi_agent', label: '11. Multi-Agent', icon: Users2, badge: 'Consensus' },
     { id: 'graph_reasoning', label: 'Graph Reasoning', icon: GitBranch, badge: 'TransE AI' },
+    { id: 'supply_radar', label: 'Geospatial Radar', icon: Navigation, badge: 'Global Tier' },
     { id: 'compliance_audit', label: 'Statutory Auditor', icon: ShieldCheck, badge: 'CBAM/ATEX' },
     { id: 'plc_code', label: 'PLC Automation Code', icon: Terminal, badge: 'IEC 61131-3' },
     { id: 'realtime_studio', label: '100 Hz Live Twin', icon: Wifi, badge: 'WebSocket' },
@@ -96,7 +100,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Product<span className="text-blue-600">IQ</span></span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200/80 tracking-wide uppercase">
-                  Enterprise Production
+                  Enterprise Apex
                 </span>
               </div>
             </div>

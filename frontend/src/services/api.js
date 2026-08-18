@@ -455,6 +455,49 @@ export async function fetchProductionHealth() {
   return await res.json();
 }
 
+export async function fetch3DDigitalTwin(partNumber, loadFactor) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/digital-twin/3d-mesh?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}&load_factor=${loadFactor || 85.0}`);
+    if (!res.ok) throw new Error('3D twin failed');
+    return await res.json();
+  } catch (err) {
+    console.error('3D error:', err);
+    return null;
+  }
+}
+
+export async function fetchVisionDefectScan(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/vision/defect-scan?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('Defect scan failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Defect scan error:', err);
+    return null;
+  }
+}
+
+export async function runPIRLVFDOptimization(payload) {
+  const res = await fetch(`${API_BASE}/advanced/rl/vfd-optimize`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error('PIRL VFD failed');
+  return await res.json();
+}
+
+export async function fetchGeospatialSupplyRadar(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/geospatial/supply-radar?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('Radar failed');
+    return await res.json();
+  } catch (err) {
+    console.error('Radar error:', err);
+    return null;
+  }
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',

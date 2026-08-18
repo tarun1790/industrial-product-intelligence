@@ -13,6 +13,10 @@ import ChemicalCorrosionView from './components/ChemicalCorrosionView';
 import FFTVibrationView from './components/FFTVibrationView';
 import PLCCodeGeneratorView from './components/PLCCodeGeneratorView';
 import RealtimeStreamingStudio from './components/RealtimeStreamingStudio';
+import WebGLTwinCanvas from './components/WebGLTwinCanvas';
+import VisionDefectScannerView from './components/VisionDefectScannerView';
+import PIRLVFDOptimizerView from './components/PIRLVFDOptimizerView';
+import GeoSpatialSupplyRadarView from './components/GeoSpatialSupplyRadarView';
 import NegotiationWarRoomView from './components/NegotiationWarRoomView';
 import CircularDismantleView from './components/CircularDismantleView';
 import NeuroSymbolicView from './components/NeuroSymbolicView';
@@ -123,6 +127,10 @@ export default function App() {
           <VisionOcrStudio selectedProduct={selectedProduct} />
         )}
 
+        {activeTab === 'vision_defect' && (
+          <VisionDefectScannerView selectedProduct={selectedProduct} />
+        )}
+
         {/* PILLAR 2: ENRICH */}
         {activeTab === 'ontology' && (
           <ProductOntologyView product={selectedProduct} />
@@ -140,6 +148,10 @@ export default function App() {
           <CADDimensionView selectedProduct={selectedProduct} />
         )}
 
+        {activeTab === 'threed_twin' && (
+          <WebGLTwinCanvas selectedProduct={selectedProduct} />
+        )}
+
         {/* PILLAR 3: VALIDATE */}
         {activeTab === 'validation' && (
           <ValidationReport product={selectedProduct} />
@@ -147,6 +159,10 @@ export default function App() {
 
         {activeTab === 'thermal_fem' && (
           <ThermalFEMSurrogateView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'pirl_vfd' && (
+          <PIRLVFDOptimizerView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'chemical_matrix' && (
@@ -188,6 +204,10 @@ export default function App() {
 
         {activeTab === 'graph_reasoning' && (
           <GraphReasoningView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'supply_radar' && (
+          <GeoSpatialSupplyRadarView selectedProduct={selectedProduct} />
         )}
 
         {activeTab === 'compliance_audit' && (
@@ -289,7 +309,7 @@ export default function App() {
           <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 100 Hz WebSockets & SCADA Online
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 3D Digital Twin & PIRL RL Engine Active
           </span>
         </div>
       </footer>

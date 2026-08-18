@@ -31,6 +31,10 @@ from app.engine.plc_code_generator import PLCCodeGeneratorEngine, PLCCodePackage
 from app.engine.fft_vibration_diagnostics import FFTVibrationDiagnosticsEngine, FFTSpectralReport
 from app.engine.supplier_negotiation_warroom import SupplierNegotiationWarRoomEngine, SupplierNegotiationWarRoomReport
 from app.engine.circular_dismantle_tree import CircularDismantleEngine, CircularDismantleReport
+from app.engine.three_d_surrogate import ThreeDSurrogateEngine, DigitalTwin3DReport
+from app.engine.vision_defect_scanner import VisionDefectScannerEngine, VisualInspectionScanReport
+from app.engine.pirl_vfd_optimizer import PIRLVFDOptimizerEngine, PIRLVFDOptimizerReport
+from app.engine.geospatial_supply_radar import GeoSpatialSupplyRadarEngine, GeoSpatialSupplyRadarReport
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -39,6 +43,25 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/digital-twin/3d-mesh", response_model=DigitalTwin3DReport)
+async def get_3d_digital_twin(part_number: str = "M3BP 160MLA 4", load_factor: float = 85.0):
+    return ThreeDSurrogateEngine.generate_3d_digital_twin(part_number, load_factor)
+
+@router.get("/vision/defect-scan", response_model=VisualInspectionScanReport)
+async def run_vision_defect_scan(part_number: str = "M3BP 160MLA 4"):
+    return VisionDefectScannerEngine.run_defect_scan(part_number)
+
+@router.post("/rl/vfd-optimize", response_model=PIRLVFDOptimizerReport)
+async def run_pirl_vfd_optimization(payload: Dict[str, Any]):
+    part = payload.get("part_number", "M3BP 160MLA 4")
+    load = float(payload.get("operating_load_pct", 65.0))
+    tariff = float(payload.get("electricity_cost", 0.14))
+    return PIRLVFDOptimizerEngine.run_pirl_optimization(part, load, tariff)
+
+@router.get("/geospatial/supply-radar", response_model=GeoSpatialSupplyRadarReport)
+async def get_geospatial_supply_radar(part_number: str = "M3BP 160MLA 4"):
+    return GeoSpatialSupplyRadarEngine.analyze_global_supply_radar(part_number)
 
 @router.get("/automation/plc-code", response_model=PLCCodePackage)
 async def get_synthesized_plc_code(part_number: str = "M3BP 160MLA 4", target_brand: str = "Siemens S7-1500"):
