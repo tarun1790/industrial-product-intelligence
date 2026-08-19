@@ -35,6 +35,9 @@ from app.engine.three_d_surrogate import ThreeDSurrogateEngine, DigitalTwin3DRep
 from app.engine.vision_defect_scanner import VisionDefectScannerEngine, VisualInspectionScanReport
 from app.engine.pirl_vfd_optimizer import PIRLVFDOptimizerEngine, PIRLVFDOptimizerReport
 from app.engine.geospatial_supply_radar import GeoSpatialSupplyRadarEngine, GeoSpatialSupplyRadarReport
+from app.engine.fmea_reliability_engine import FMEAReliabilityEngine, FMEAReliabilityReport
+from app.engine.natural_language_explainer import NaturalLanguageExplainerEngine, CopilotQueryResponse
+from app.engine.skid_packager import SkidPackagerEngine, SkidPackageSpecification
 from app.models.schemas import (
     WhyNotEvaluation, CatalogHealthMetrics, HITLReviewItem,
     ProductRevisionHistoryItem, SourceDiscoveryReport, CategoryOntologySchema,
@@ -43,6 +46,22 @@ from app.models.schemas import (
 from app.api.routes_products import CATALOG
 
 router = APIRouter(prefix="/advanced", tags=["Advanced Engineering Intelligence"])
+
+@router.get("/reliability/fmea", response_model=FMEAReliabilityReport)
+async def get_fmea_diagnostics(part_number: str = "M3BP 160MLA 4"):
+    return FMEAReliabilityEngine.generate_fmea_diagnostics(part_number)
+
+@router.post("/copilot/explain", response_model=CopilotQueryResponse)
+async def explain_engineering_concept_api(payload: Dict[str, str]):
+    part = payload.get("part_number", "M3BP 160MLA 4")
+    query = payload.get("query", "Why is this motor rated at 14.7 A and what is its efficiency?")
+    return NaturalLanguageExplainerEngine.explain_engineering_concept(part, query)
+
+@router.post("/skid/synthesize", response_model=SkidPackageSpecification)
+async def synthesize_skid_package_api(payload: Dict[str, Any]):
+    app_type = payload.get("application_type", "Sanitary Food & Bio-Pharma CIP Booster Skid")
+    flow = float(payload.get("throughput_m3h", 35.0))
+    return SkidPackagerEngine.synthesize_skid_package(app_type, flow)
 
 @router.get("/digital-twin/3d-mesh", response_model=DigitalTwin3DReport)
 async def get_3d_digital_twin(part_number: str = "M3BP 160MLA 4", load_factor: float = 85.0):

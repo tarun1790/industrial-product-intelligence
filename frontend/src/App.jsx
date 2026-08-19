@@ -17,6 +17,9 @@ import WebGLTwinCanvas from './components/WebGLTwinCanvas';
 import VisionDefectScannerView from './components/VisionDefectScannerView';
 import PIRLVFDOptimizerView from './components/PIRLVFDOptimizerView';
 import GeoSpatialSupplyRadarView from './components/GeoSpatialSupplyRadarView';
+import FMEADiagnosticsView from './components/FMEADiagnosticsView';
+import NaturalLanguageCopilotView from './components/NaturalLanguageCopilotView';
+import SystemSkidPackagerView from './components/SystemSkidPackagerView';
 import NegotiationWarRoomView from './components/NegotiationWarRoomView';
 import CircularDismantleView from './components/CircularDismantleView';
 import NeuroSymbolicView from './components/NeuroSymbolicView';
@@ -165,6 +168,10 @@ export default function App() {
           <PIRLVFDOptimizerView selectedProduct={selectedProduct} />
         )}
 
+        {activeTab === 'fmea_diagnostics' && (
+          <FMEADiagnosticsView selectedProduct={selectedProduct} />
+        )}
+
         {activeTab === 'chemical_matrix' && (
           <ChemicalCorrosionView selectedProduct={selectedProduct} />
         )}
@@ -198,6 +205,10 @@ export default function App() {
           <ConflictResolver product={selectedProduct} />
         )}
 
+        {activeTab === 'copilot_explainer' && (
+          <NaturalLanguageCopilotView selectedProduct={selectedProduct} />
+        )}
+
         {activeTab === 'multi_agent' && (
           <MultiAgentConsensusView product={selectedProduct} />
         )}
@@ -224,6 +235,10 @@ export default function App() {
 
         {activeTab === 'negotiation_warroom' && (
           <NegotiationWarRoomView selectedProduct={selectedProduct} />
+        )}
+
+        {activeTab === 'skid_packager' && (
+          <SystemSkidPackagerView />
         )}
 
         {activeTab === 'circular_dismantle' && (
@@ -309,7 +324,7 @@ export default function App() {
           <span>IEC 60034 • ISO 15552 • API 610 • 3-A Sanitary • AS9100D • ISO 28921 Cryo</span>
           <span>•</span>
           <span className="text-blue-700 font-semibold flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> 3D Digital Twin & PIRL RL Engine Active
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> FMEA SIL-3 & Copilot Explainer Active
           </span>
         </div>
       </footer>

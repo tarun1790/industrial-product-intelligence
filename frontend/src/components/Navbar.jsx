@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle, Wifi, Box, Camera, Navigation } from 'lucide-react';
+import { ShieldCheck, Database, GitMerge, FileCheck2, Share2, Search, ArrowLeftRight, Activity, ShieldAlert, Layers, Table, HelpCircle, History, BarChart3, Globe, Award, Eye, Cpu, Leaf, Users2, Factory, Network, ShoppingCart, ScanLine, Server, Radio, Compass, GitBranch, Target, Wrench, Flame, FlaskConical, DollarSign, Terminal, ShoppingBag, Recycle, Wifi, Box, Camera, Navigation, MessageSquare, Sparkles, Package } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, selectedProduct, activeIndustry, setActiveIndustry, industriesMeta }) {
   const tabs = [
@@ -20,6 +20,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'validation', label: '5. Physics', icon: FileCheck2, badge: `${selectedProduct?.trust_score || 100}%` },
     { id: 'thermal_fem', label: 'Thermal FEM', icon: Flame, badge: 'PINO 3D' },
     { id: 'pirl_vfd', label: 'PIRL VFD Optimizer', icon: Cpu, badge: 'RL +7.8%' },
+    { id: 'fmea_diagnostics', label: 'FMEA & SIL-3', icon: ShieldAlert, badge: 'MTBF 57k' },
     { id: 'chemical_matrix', label: 'Chemical Matrix', icon: FlaskConical, badge: 'NACE MR0175' },
     { id: 'fft_vibration', label: 'FFT Vibration Twin', icon: Radio, badge: 'ISO 10816' },
     { id: 'neuro_symbolic', label: '6. Neuro-Symbolic', icon: Cpu, badge: 'Logic' },
@@ -30,6 +31,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     // PILLAR 4: PROVE
     { id: 'provenance', label: '9. Provenance', icon: Eye, badge: 'Proof' },
     { id: 'conflicts', label: '10. Conflicts', icon: GitMerge, badge: '5-Step' },
+    { id: 'copilot_explainer', label: 'Copilot Explainer', icon: Sparkles, badge: 'Zero Hallucination' },
     { id: 'multi_agent', label: '11. Multi-Agent', icon: Users2, badge: 'Consensus' },
     { id: 'graph_reasoning', label: 'Graph Reasoning', icon: GitBranch, badge: 'TransE AI' },
     { id: 'supply_radar', label: 'Geospatial Radar', icon: Navigation, badge: 'Global Tier' },
@@ -37,6 +39,7 @@ export default function Navbar({ activeTab, setActiveTab, selectedProduct, activ
     { id: 'plc_code', label: 'PLC Automation Code', icon: Terminal, badge: 'IEC 61131-3' },
     { id: 'realtime_studio', label: '100 Hz Live Twin', icon: Wifi, badge: 'WebSocket' },
     { id: 'negotiation_warroom', label: 'Supplier War-Room', icon: ShoppingBag, badge: 'Nash Auction' },
+    { id: 'skid_packager', label: 'Skid Packager', icon: Package, badge: 'Turnkey BOM' },
     { id: 'circular_dismantle', label: 'Circular Dismantle', icon: Recycle, badge: '94% MCI' },
     { id: 'tco_optimizer', label: 'TCO & Carbon ROI', icon: DollarSign, badge: '10-Yr NPV' },
     { id: 'history', label: '12. History', icon: History, badge: 'Timeline' },

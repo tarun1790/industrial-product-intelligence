@@ -498,6 +498,43 @@ export async function fetchGeospatialSupplyRadar(partNumber) {
   }
 }
 
+export async function fetchFMEADiagnostics(partNumber) {
+  try {
+    const res = await fetch(`${API_BASE}/advanced/reliability/fmea?part_number=${encodeURIComponent(partNumber || 'M3BP 160MLA 4')}`);
+    if (!res.ok) throw new Error('FMEA failed');
+    return await res.json();
+  } catch (err) {
+    console.error('FMEA error:', err);
+    return null;
+  }
+}
+
+export async function explainEngineeringConcept(partNumber, query) {
+  const res = await fetch(`${API_BASE}/advanced/copilot/explain`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      part_number: partNumber || 'M3BP 160MLA 4',
+      query: query || 'Why is this motor rated at 14.7 A and what is its efficiency?'
+    })
+  });
+  if (!res.ok) throw new Error('Copilot explain failed');
+  return await res.json();
+}
+
+export async function synthesizeSkidPackage(applicationType, throughput) {
+  const res = await fetch(`${API_BASE}/advanced/skid/synthesize`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      application_type: applicationType || 'Sanitary Food & Bio-Pharma CIP Booster Skid',
+      throughput_m3h: throughput || 35.0
+    })
+  });
+  if (!res.ok) throw new Error('Skid synthesis failed');
+  return await res.json();
+}
+
 export async function fetchMotorCurves(payload) {
   const res = await fetch(`${API_BASE}/advanced/curves/motor`, {
     method: 'POST',
